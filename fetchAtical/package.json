@@ -1,0 +1,16 @@
+{
+  "name": "fetchatical",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "debug": "^3.1.0",
+    "mongoose": "^4.11.13"
+  }
+}
