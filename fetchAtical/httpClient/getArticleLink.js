@@ -3,19 +3,29 @@ var querystring = require('querystring');
 var debug = require('debug')('fetchArticle:http');
 var chalk = require('chalk');
 
+var defaultParam = {
+    channel_id: 'm5565',
+    cstart: 0,
+    cend: 1,
+    infinite: true,
+    refresh: 1,
+    __from__: 'pc',
+    multi: 5,
+    appid: 'web_yidian',
+    _: '1506669338983'
+};
+
 function requestOptionFactory(param) {
+    var queryObj = Object.assign({}, defaultParam, param);
     return {
         hostname: 'www.yidianzixun.com',
         port: 80,
-        path: '/article/' + param.itemid,
-        method: 'GET',
-        headers: {
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
-        }
+        path: '/home/q/news_list_for_channel?' + querystring.stringify(queryObj),
+        method: 'GET'
     }
 }
 
-function getAticleHtml(param) {
+function getArticleLink(param) {
     return new Promise(function (resolve, reject) {
         //创建请求  
         var req = http.request(requestOptionFactory(param), function (res) {
@@ -27,7 +37,9 @@ function getAticleHtml(param) {
                 rawData += chunk;
             });
             res.on('end', function () {
-                resolve(rawData);
+                var articles = JSON.parse(rawData);
+                debug(chalk.gray('响应结束，数据条数：'), chalk.yellow(articles.result.length));
+                resolve(articles.result);
             });
         });
         req.on('error', function (err) {
@@ -38,19 +50,5 @@ function getAticleHtml(param) {
     });
 }
 
-function getAticle(itemid) {
-    return new Promise(function(resolve, reject) {
-        getAticleHtml({itemid: itemid})
-        .then(function(res) {
-            var r1 = /^yidian\.docinfo.+$/m;
-            var regResult = r1.exec(res);
-            var docinfo = regResult[0].replace(/^yidian\.docinfo\s=\s/, '');
-            docinfo = docinfo.replace(';', '');
-            docinfo = JSON.parse(docinfo);
-            resolve(docinfo.doc.images);
-        })
-    });
-}
-
-module.exports = getAticle;
+module.exports = getArticleLink;
 

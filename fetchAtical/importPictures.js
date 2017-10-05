@@ -1,7 +1,7 @@
 var debug = require('debug')('fetchArticle:persistence');
 var chalk = require('chalk');
 
-var getArticle = require('./httpClient/getArticleLink');
+var getArticle = require('./httpClient/getArticle');
 var articleApi = require('./persistence/api/article');
 
 function importArticles(channel_id, amount) {
