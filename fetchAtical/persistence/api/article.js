@@ -34,6 +34,12 @@ articleApi.prototype = {
             });
         })
     },
+    findtest: function() {
+        var query =  artileModel.find({});
+        /* query.exec(function(){
+            console.info(11)
+        }) */
+    },
     // 无重复刷新
     update: function(obj) {
         var self = this;
