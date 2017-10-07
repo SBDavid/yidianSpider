@@ -1,7 +1,7 @@
-var debug = require('debug')('fetchArticle:persistence');
+var debug = require('debug')('fetchArticle:task');
 var chalk = require('chalk');
 
-var getArticle = require('./httpClient/getArticleLink');
+var getArticleLink = require('./httpClient/getArticleLink');
 var articleApi = require('./persistence/api/article');
 
 function importArticles(channel_id, amount) {
@@ -18,7 +18,9 @@ function importArticles(channel_id, amount) {
             // 通过promise.all写入所有的数据
             var promiseList = [];
             res.forEach(function(item) {
-                promiseList.push(articleApi.update(item));
+                // 写入fromId 作者编号
+                item.fromId = item.wemedia_info.fromId;
+                promiseList.push(articleApi.save(item));
             });
 
             return Promise.all(promiseList);

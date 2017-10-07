@@ -20,7 +20,7 @@ function getAticleHtml(param) {
         //创建请求  
         var req = http.request(requestOptionFactory(param), function (res) {
             debug(chalk.grey('STATUS:'), chalk.yellow(res.statusCode));
-            debug(chalk.grey('HEADERS:'), chalk.yellow(JSON.stringify(res.headers, null, 4)));
+            /* debug(chalk.grey('HEADERS:'), chalk.yellow(JSON.stringify(res.headers, null, 4))); */
             let rawData = '';
             res.setEncoding('utf-8');
             res.on('data', function (chunk) {
