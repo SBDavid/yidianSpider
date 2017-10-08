@@ -1,5 +1,4 @@
 var http = require('http');
-var querystring = require('querystring');
 var debug = require('debug')('fetchArticle:http');
 var chalk = require('chalk');
 
