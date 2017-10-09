@@ -7,13 +7,55 @@ var chalk = require('chalk');
 var articleApi = require('./persistence/api/article');
 var getAticle = require('./httpClient/getArticle');
 
+var getImage = require('./httpClient/getImage');
+var saveImage = require('./persistence/api/saveImage');
+
+/**
+ * 获取图片二进制数据，并保存图片
+ * @param {Object} image 
+ */
+function saveImageFile(imageUrl, isSurface) {
+    return new Promise(function(resolve, reject) {
+        getImage(imageUrl)
+        .then(function(imageData) {
+            if (isSurface) {
+                imageData.filename = '../images/surface/' + imageData.filename;
+            } else {
+                imageData.filename = '../images/content/' + imageData.filename;
+            }
+            return saveImage(imageData);
+        })
+        .then(function(res) {
+            resolve(res);
+        })
+        .catch(function(err){
+            reject(err);
+        })
+    });
+}
+
 function importPictureFromArticle(article, timeout) {
     return new Promise(function(resolve, reject){
+        var imageList;
         // 获取图片链接
         getAticle(article.itemid)
-        .then(function(images) {
+        .then(function(images){
+            // 保存图片信息
+            imageList = images;
+            // 保存图片文件
+            var savePromises = [];
+            images.forEach((image, index) => {
+                savePromises.push(saveImageFile(image.url, false));
+                if (index < 3) {
+                    savePromises.push(saveImageFile(image.url + '&type=thumbnail_320x200', true));
+                }
+            })
+            return Promise.all(savePromises);
+        })
+        .then(function(res) {
+            debug(chalk.grey('单篇文章图片文件保存成功 图片数量：'), chalk.yellow(res.length));
             // 保存图片链接
-            return articleApi.update({itemid: article.itemid}, {images: images});
+            return articleApi.update({itemid: article.itemid}, {images: imageList});
         })
         .then(function(res){
             setTimeout(function() {
@@ -35,6 +77,7 @@ async function importLoop(articles, timeout) {
     try {
         for(var i = 0; i < articles.length; i++) {
             result += await importPictureFromArticle(articles[i], timeout);
+            debug(chalk.grey('进度：'), chalk.yellow(i + '/' + articles.length));
         }
     }
     catch (err) {
