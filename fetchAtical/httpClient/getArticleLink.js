@@ -25,7 +25,9 @@ function requestOptionFactory(param) {
     }
 }
 
-function getArticleLink(param) {
+function getArticleLink(param, ctype) {
+    ctype = ctype || 'news';
+
     return new Promise(function (resolve, reject) {
         //创建请求  
         var req = http.request(requestOptionFactory(param), function (res) {
@@ -38,8 +40,12 @@ function getArticleLink(param) {
             });
             res.on('end', function () {
                 var articles = JSON.parse(rawData);
-                debug(chalk.gray('响应结束，数据条数：'), chalk.yellow(articles.result.length));
-                resolve(articles.result);
+                // 只需要好笑图片
+                var results =  articles.result.filter(item => {
+                    return item.ctype === ctype;
+                })
+                debug(chalk.gray('响应结束，数据条数：'), chalk.yellow(results.length));
+                resolve(results);
             });
         });
         req.on('error', function (err) {

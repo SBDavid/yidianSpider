@@ -16,8 +16,12 @@ var saveImage = require('./persistence/api/saveImage');
  */
 function saveImageFile(imageUrl, isSurface) {
     return new Promise(function(resolve, reject) {
+
+        var filename;
+
         getImage(imageUrl)
         .then(function(imageData) {
+            filename = imageData.filename
             if (isSurface) {
                 imageData.filename = '../images/surface/' + imageData.filename;
             } else {
@@ -26,7 +30,7 @@ function saveImageFile(imageUrl, isSurface) {
             return saveImage(imageData);
         })
         .then(function(res) {
-            resolve(res);
+            resolve(filename);
         })
         .catch(function(err){
             reject(err);
@@ -41,16 +45,48 @@ function importPictureFromArticle(article, timeout) {
         getAticle(article.itemid)
         .then(function(images){
             // 保存图片信息
-            imageList = images;
-            // 保存图片文件
+            imageList = {
+                content: images,
+                surface: []
+            };
+            // 保存图片文件 surface
             var savePromises = [];
             images.forEach((image, index) => {
-                savePromises.push(saveImageFile(image.url, false));
                 if (index < 3) {
+                    imageList.surface.push({
+                        width: 320,
+                        height: 240,
+                        animated: false,
+                        url: image.url + '&type=thumbnail_320x200'
+                    })
                     savePromises.push(saveImageFile(image.url + '&type=thumbnail_320x200', true));
                 }
             })
+            
             return Promise.all(savePromises);
+        })
+        /* 保存文件名 */
+        .then(function(filenames) {
+            filenames.forEach((filename, index) => {
+                imageList.surface[index].filename = filename;
+            });
+            return Promise.resolve(true); // 这一步没有异步请求
+        })
+        .then(function(){
+            // 保存图片文件
+            var savePromises = [];
+            imageList.content.forEach((image) => {
+                savePromises.push(saveImageFile(image.url, false));
+            })
+            
+            return Promise.all(savePromises);
+        })
+        /* 保存文件名 */
+        .then(function(filenames) {
+            filenames.forEach((filename, index) => {
+                imageList.content[index].filename = filename;
+            });
+            return Promise.resolve(filenames); // 这一步没有异步请求
         })
         .then(function(res) {
             debug(chalk.grey('单篇文章图片文件保存成功 图片数量：'), chalk.yellow(res.length));
