@@ -1,6 +1,8 @@
 mixin article(article)
-    div.article-list-item
-        h2 #{article.title}
-        ul
-            li
-        p
+    div.article-list-item.bottom-1px
+        h2.title #{article.title}
+        ul.img-list.cf
+            each img in article.surface
+                li
+                    img(src=img, alt="")
+        p.article-info #{article.date}
