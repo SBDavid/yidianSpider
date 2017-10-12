@@ -15,8 +15,9 @@ app.use('/static', express.static('static'));
 app.use('/img', express.static('../images'));
 
 // routers
-app.use('/', require('./apps/router'));
+app.use('/list', require('./apps/list/router'));
+app.use('/article', require('./apps/article/router'));
 
-var server = app.listen(81, function () {
-	debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(81));
+var server = app.listen(80, function () {
+	debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(80));
 });

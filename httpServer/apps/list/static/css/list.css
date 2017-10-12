@@ -142,9 +142,11 @@
 }
 .body .article-list-item {
   position: relative;
+  display: block;
 }
 .body .article-list-item .title {
   padding: .15rem 0;
+  color: #000;
 }
 .body .article-list-item .img-list li {
   list-style: none;

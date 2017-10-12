@@ -20,10 +20,9 @@ var getArticleListItem = function(article) {
         var moment = dateUtils.getMomentYidian(article.date);
         date = dateUtils.getNormalFormatDate(moment);
     }
-    var moment = dateUtils.getMomentYidian(article.date);
-    date = dateUtils.getNormalFormatDate(moment);
     return {
         title: article.title,
+        itemid: article.itemid,
         surface: article.images.surface.map(item => { return surfaceUrl + item.filename }),
         date: date
     }

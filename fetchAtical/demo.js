@@ -1,7 +1,7 @@
 /* m5565 m203647 */
 /* var importArticle =  require('./importArticle');
 
-importArticle('m203647', 10).then(function(res) {
+importArticle('m5565', 10).then(function(res) {
 }); */
 
 /* var getArticle = require('./httpClient/getArticle');

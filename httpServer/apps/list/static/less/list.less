@@ -1,7 +1,7 @@
-@import (less) "base/fontsize.less";
-@import (less) "base/container.less";
-@import (less) "base/utils.less";
-@import (less) "base/onepx.less";
+@import (less) "../../../common/style/fontsize.less";
+@import (less) "../../../common/style/container.less";
+@import (less) "../../../common/style/utils.less";
+@import (less) "../../../common/style/onepx.less";
 
 .header {
 
@@ -22,9 +22,11 @@
 
     .article-list-item {
         position: relative;
+        display: block;
 
         .title {
             padding: .15rem 0;
+            color: #000
         }
         .img-list {
             li {

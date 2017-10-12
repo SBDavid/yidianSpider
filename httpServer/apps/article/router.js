@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var lessMiddleware = require('less-middleware');
 
-var controller = require('./list/controller/controller');
+var controller = require('./controller/controller');
 
-router.use('/list/static/css', lessMiddleware('apps/list/static/less', {
-    dest: 'apps/list/static/css',
+router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
+    dest: __dirname + '/static/css',
     force: true,
     debug: false,
     render: {
@@ -14,9 +14,9 @@ router.use('/list/static/css', lessMiddleware('apps/list/static/less', {
 }));
 
 //static file
-router.use('/list/static', express.static('apps/list/static'));
+router.use('/static', express.static(__dirname + '/static'));
 
-router.get('/list', function (req, res) {
+router.get('/', function (req, res) {
 
     // 获取文章列表 -- 已经扒取成功的
     controller()

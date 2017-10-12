@@ -25,10 +25,7 @@ createTimeFromNow = function (format) {
 
 createFormatDate = function (format) {
     return function () {
-        console.info(1, arguments);
-        var t = arguments[0].format(format);
-        console.info(2);
-        return t;
+        return arguments[0].format(format);
     };
 }
 
