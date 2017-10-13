@@ -17,8 +17,13 @@ router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
 router.use('/static', express.static(__dirname + '/static'));
 
 router.get('/:itemid', function (req, res) {
-
-    res.send(req.params.itemid);
+    controller()
+    .then(function(articles){
+        res.render('list', { 
+            title: "小黄毛",
+            articles: articles
+        });
+    })
 });
 
 
