@@ -1,0 +1,39 @@
+@import (less) "../../../common/style/fontsize.less";
+@import (less) "../../../common/style/container.less";
+@import (less) "../../../common/style/utils.less";
+@import (less) "../../../common/style/onepx.less";
+@import (less) "../../../common/style/color.less";
+
+.header {
+    padding: .2rem @cont-padding;
+    position: relative;
+    h1{
+        font-size: @font-size-large;
+        color: @common-black;
+        font-weight: bold;
+        margin-bottom: .2rem
+    }
+
+    .article-info{
+        font-size: @font-size-small;
+        color: @common-grey;
+    }
+}
+
+.body {
+    padding: .2rem @cont-padding;
+
+    ul {
+        li {
+            list-style: none;
+            display: block;
+            text-align: center;
+            margin-bottom: .2rem;
+
+            img {
+                max-width: 7rem;
+                max-height: 7rem;
+            }
+        }
+    }
+}

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var lessMiddleware = require('less-middleware');
 
+var config = require('../config');
 var controller = require('./controller/controller');
 
 router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
@@ -21,8 +22,9 @@ router.get('/', function (req, res) {
     // 获取文章列表 -- 已经扒取成功的
     controller()
     .then(function(articles){
-        res.render('list', { 
-            title: "小黄毛",
+        res.render('list', {
+            config: config,
+            title: "嘻唰唰",
             articles: articles
         });
     })

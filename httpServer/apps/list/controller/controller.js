@@ -2,9 +2,10 @@ var debug = require('debug')('httpServer:controller');
 var chalk = require('chalk');
 
 var articleApi = require('../../../../fetchAtical/persistence/api/article'),
-    dateUtils = new (require('../../common/utils/date'))();
+    dateUtils = new (require('../../common/utils/date'))(),
+    config = require('../../config');
 
-var surfaceUrl = '../../../../img/surface/';
+var surfaceUrl = config.getDomain('img') + '/img/surface/';
 
 var getArticleListItem = function(article) {
 
@@ -30,7 +31,7 @@ var getArticleListItem = function(article) {
 
 module.exports = function() {
     return new Promise(function(resolve, reject) {
-        articleApi.find({images: {$ne: null}}, 10)
+        articleApi.find({images: {$ne: null}}, 30)
         .then(function(articles) {
             resolve(articles.map(item => {return getArticleListItem(item)}));
         })

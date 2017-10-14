@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var lessMiddleware = require('less-middleware');
 
-// var controller = require('./controller/controller');
+var config = require('../config');
+var controller = require('./controller/controller');
 
 router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
     dest: __dirname + '/static/css',
@@ -17,11 +18,11 @@ router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
 router.use('/static', express.static(__dirname + '/static'));
 
 router.get('/:itemid', function (req, res) {
-    controller()
+    controller(req.params.itemid)
     .then(function(articles){
-        res.render('list', { 
-            title: "小黄毛",
-            articles: articles
+        res.render('article', {
+            config: config,
+            article: articles[0]
         });
     })
 });

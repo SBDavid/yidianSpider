@@ -6,7 +6,7 @@ var app = express();
 
 // app config
 app.set('view engine', 'pug');
-app.set('views', ['./apps/list/views']);
+app.set('views', ['./apps/list/views', './apps/article/views']);
 
 // public static file
 app.use('/static', express.static('static'));
@@ -18,6 +18,11 @@ app.use('/img', express.static('../images'));
 app.use('/list', require('./apps/list/router'));
 app.use('/article', require('./apps/article/router'));
 
-var server = app.listen(81, function () {
-	debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(81));
+// 重定向到首页
+app.use('/', function (req, res){
+	res.redirect('/list');
+});
+
+var server = app.listen(80, function () {
+	debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(80));
 });
