@@ -1,15 +1,15 @@
 module.exports = {
     domain: {
         website: {
-            domain: 'w185896w27.imwork.net',
+            domain: 'fungif.xishuashua.site',
             host: '80'
         },
         static: {
-            domain: 'w185896w27.imwork.net',
+            domain: 'fungif.xishuashua.site',
             host: '80'
         },
         img: {
-            domain: 'w185896w27.imwork.net',
+            domain: 'fungif.xishuashua.site',
             host: '80'
         }
     },
