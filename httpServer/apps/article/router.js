@@ -21,7 +21,7 @@ router.get('/:itemid', function (req, res) {
     controller(req.params.itemid)
     .then(function(articles){
         res.render('article', {
-            config: config,
+            domain: config.domain,
             article: articles[0]
         });
     })

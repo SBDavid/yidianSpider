@@ -4,6 +4,8 @@ var chalk = require('chalk');
 var express = require('express');
 var app = express();
 
+var config = require('./apps/config');
+
 // app config
 app.set('view engine', 'pug');
 app.set('views', ['./apps/list/views', './apps/article/views']);
@@ -23,6 +25,6 @@ app.use('/', function (req, res){
 	res.redirect('/list');
 });
 
-var server = app.listen(80, function () {
-	debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(80));
+var server = app.listen(config.port, function () {
+	debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(config.port));
 });

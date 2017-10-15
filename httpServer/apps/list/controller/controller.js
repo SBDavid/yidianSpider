@@ -5,7 +5,7 @@ var articleApi = require('../../../../fetchAtical/persistence/api/article'),
     dateUtils = new (require('../../common/utils/date'))(),
     config = require('../../config');
 
-var surfaceUrl = config.getDomain('img') + '/img/surface/';
+var surfaceUrl = config.getUrl('img') + '/img/surface/';
 
 var getArticleListItem = function(article) {
 

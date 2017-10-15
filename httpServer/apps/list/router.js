@@ -23,7 +23,7 @@ router.get('/', function (req, res) {
     controller()
     .then(function(articles){
         res.render('list', {
-            config: config,
+            domain: config.domain,
             title: "嘻唰唰",
             articles: articles
         });

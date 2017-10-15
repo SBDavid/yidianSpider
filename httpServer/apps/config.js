@@ -1,5 +1,19 @@
-module.exports = {
-    domain: {
+var domain = {
+    dev: {
+        website: {
+            domain: 'xwm.com',
+            host: '81'
+        },
+        static: {
+            domain: 'static.xwm.com',
+            host: '81'
+        },
+        img: {
+            domain: 'img.xwm.com',
+            host: '81'
+        }
+    },
+    pro: {
         website: {
             domain: 'fungif.xishuashua.site',
             host: '80'
@@ -12,8 +26,17 @@ module.exports = {
             domain: 'fungif.xishuashua.site',
             host: '80'
         }
-    },
-    getDomain: function(type) {
-        return 'http://' + this.domain[type].domain + ':' + this.domain[type].host;
     }
+};
+
+function config() {
+    this.env = process.env.env || 'dev';
+    this.domain = domain[this.env];
+    this.port = domain[this.env].website.host
 }
+
+config.prototype.getUrl = function(type) {
+    return 'http://' + domain[this.env][type].domain + ':' + domain[this.env][type].host;
+}
+
+module.exports = new config();
