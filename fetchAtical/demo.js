@@ -23,5 +23,5 @@ articleApi.find({}, 1)
 
 var importPictures =  require('./importPictures');
 
-importPictures(100, 10).then(function(res) {
+importPictures(100, 10000).then(function(res) {
 });
