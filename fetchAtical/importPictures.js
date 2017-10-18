@@ -65,15 +65,17 @@ function importPictureFromArticle(article, timeout) {
             
             return Promise.all(savePromises);
         })
-        /* 保存文件名 */
+        /* 保存文件名 surface */
         .then(function(filenames) {
             filenames.forEach((filename, index) => {
                 imageList.surface[index].filename = filename;
             });
             return Promise.resolve(true); // 这一步没有异步请求
         })
+        /* 保存图片文件 静态图 */
+        
+        /* 保存图片文件 content */
         .then(function(){
-            // 保存图片文件
             var savePromises = [];
             imageList.content.forEach((image) => {
                 savePromises.push(saveImageFile(image.url, false));
@@ -81,7 +83,7 @@ function importPictureFromArticle(article, timeout) {
             
             return Promise.all(savePromises);
         })
-        /* 保存文件名 */
+        /* 保存文件名 content */
         .then(function(filenames) {
             filenames.forEach((filename, index) => {
                 imageList.content[index].filename = filename;
