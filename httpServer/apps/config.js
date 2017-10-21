@@ -26,6 +26,20 @@ var domain = {
             domain: 'fungif.xishuashua.site',
             host: '80'
         }
+    },
+    beian: {
+        website: {
+            domain: '101.132.147.139',
+            host: '80'
+        },
+        static: {
+            domain: '101.132.147.139',
+            host: '80'
+        },
+        img: {
+            domain: '101.132.147.139',
+            host: '80'
+        }
     }
 };
 
