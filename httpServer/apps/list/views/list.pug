@@ -5,20 +5,7 @@ html
 		meta(name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
 		link(rel='stylesheet', href='http://' + domain.static.domain + ':' + domain.static.host + '/static/css/base.css')
 		link(rel='stylesheet', href='http://' + domain.static.domain + ':' + domain.static.host + '/list/static/css/list.css')
-		script
-			| (function (designW) {
-			|	var docEl = document.documentElement,
-			|		resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-			|		recalc = function () {
-			|				var clientWidth = docEl.clientWidth;
-			|			if (!clientWidth) return;
-			|			docEl.style.fontSize = 100 * (clientWidth / designW) + 'px';
-			|		};
-			|	if (!document.addEventListener) return;
-			|		recalc();
-			|	window.addEventListener(resizeEvt, recalc, false);
-			|	document.addEventListener('DOMContentLoaded', recalc, false);
-			|})(750);
+		include ../../common/views/mobileRem.pug
 		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static/js/jquery.js')
 		
 	body

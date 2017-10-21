@@ -5,7 +5,9 @@ var articleApi = require('../../../../fetchAtical/persistence/api/article'),
     dateUtils = new (require('../../common/utils/date'))(),
     config = require('../../config');
 
-var contentUrl = config.getUrl('img') + '/img/content/';
+var contentUrl = config.getUrl('img') + '/img/content/',
+    staticUrl = config.getUrl('img') + '/img/static/';
+
 
 var getArticleListItem = function(article) {
 
@@ -24,7 +26,15 @@ var getArticleListItem = function(article) {
     return {
         title: article.title,
         itemid: article.itemid,
-        content: article.images.content.map(item => {  item.url = contentUrl + item.filename; return item; }),
+        content: article.images.content.map(item => {
+            if (item.animated === true) {
+                item.url = staticUrl + item.filename; 
+                item.animatedurl = contentUrl + item.filename;
+            } else {
+                item.url = contentUrl + item.filename; 
+            }
+            return item; 
+        }),
         date: date
     }
 }

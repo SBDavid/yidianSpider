@@ -11,7 +11,13 @@ router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
     debug: false,
     render: {
         compress: false
-    }
+    },
+/*     postprocess: {
+        css: function(css, req) {
+            console.info(css)
+            return css; 
+        }
+    } */
 }));
 
 //static file

@@ -153,3 +153,19 @@
   max-width: 7rem;
   max-height: 7rem;
 }
+.body ul li .animatedCont {
+  position: relative;
+}
+.body ul li .animatedCont .play-btn {
+  width: 1rem;
+  height: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-image: url('../less/play.png');
+  background-size: .8rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -3,10 +3,10 @@ m203647
 m75544 它趣 
 m577717 青哇
 */
-var importArticle =  require('./importArticle');
+/* var importArticle =  require('./importArticle');
 
-importArticle('m75544', 10).then(function(res) {
-});
+importArticle('m5565', 10).then(function(res) {
+}); */
 
 /* var getArticle = require('./httpClient/getArticle');
 
