@@ -3,10 +3,10 @@ m203647
 m75544 它趣 
 m577717 青哇
 */
-var importArticle =  require('./importArticle');
+/* var importArticle =  require('./importArticle');
 
 importArticle('m5565', 100).then(function(res) {
-});
+}); */
 
 /* var getArticle = require('./httpClient/getArticle');
 
@@ -21,7 +21,7 @@ articleApi.find({}, 1)
     console.info(res);
 });  */
 
-/* var importPictures =  require('./importPictures');
+var importPictures =  require('./importPictures');
 
 importPictures(100, 10000).then(function(res) {
-}); */
+});
