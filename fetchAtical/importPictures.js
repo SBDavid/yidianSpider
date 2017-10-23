@@ -143,7 +143,8 @@ async function importLoop(articles, timeout) {
  * 最后返回更新的数量
  */
 function importPictures(amount, timeout) {
-
+    amount = parseInt(amount);
+    timeout = parseInt(timeout);
     return new Promise(function (resolve, reject) {
 
         articleApi.find({ images: null }, amount)

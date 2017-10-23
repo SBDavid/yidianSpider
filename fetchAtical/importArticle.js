@@ -1,4 +1,4 @@
-var debug = require('debug')('fetchArticle:task');
+var debug = require('debug')('fetchArticle:cmd');
 var chalk = require('chalk');
 
 var getArticleLink = require('./httpClient/getArticleLink');
@@ -8,9 +8,8 @@ function importArticles(channel_id, amount) {
 
     var param = {
         channel_id: channel_id,
-        cend: amount
+        cend: amount || 10
     }
-
     return new Promise(function(resolve, reject) {
 
         getArticleLink(param)

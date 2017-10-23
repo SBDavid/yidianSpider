@@ -21,7 +21,7 @@ articleApi.find({}, 1)
     console.info(res);
 });  */
 
-var importPictures =  require('./importPictures');
+/* var importPictures =  require('./importPictures');
 
 importPictures(100, 10000).then(function(res) {
-});
+}); */
