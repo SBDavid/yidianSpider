@@ -7,7 +7,6 @@ html
 		link(rel='stylesheet', href='http://' + domain.static.domain + ':' + domain.static.host + '/article/static/css/article.css')
 		include ../../common/views/mobileRem.pug
 		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static/js/jquery.js')
-		include ./loadgif.pug
 	body
 		div.header.bottom-1px
 			h1 #{article.title}
@@ -18,8 +17,9 @@ html
 					li
 						if imageInfo.animatedurl
 							div.animatedCont
-								img(src=imageInfo.url data-animated-src=imageInfo.animatedurl)
+								img(src=imageInfo.url data-static-src=imageInfo.url data-animated-src=imageInfo.animatedurl)
 								div.play-btn
 
 						else
 							img(src=imageInfo.url)
+		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static/js/article.js')

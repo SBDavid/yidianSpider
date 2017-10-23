@@ -1,7 +1,7 @@
 script
     | window.onload = function() {
     |   var gifContainer = $('.body');
-    |   gifContainer.on('touchend', 'img', function(event) {
+    |   gifContainer.on('click', 'img', function(event) {
     |       if ($(event.currentTarget)[0].dataset['animatedSrc'] === undefined) return;
     |       $(event.currentTarget).attr('src', $(event.currentTarget)[0].dataset['animatedSrc']);
     |       $(event.currentTarget).next().remove();
