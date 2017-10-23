@@ -11,7 +11,8 @@ var domain = {
         img: {
             domain: 'img.xwm.com',
             host: '81'
-        }
+        },
+        contentStratege: 'outter'
     },
     pro: {
         website: {
@@ -25,7 +26,8 @@ var domain = {
         img: {
             domain: 'fungif.xishuashua.site',
             host: '80'
-        }
+        },
+        contentStratege: 'inner'
     },
     beian: {
         website: {
@@ -39,14 +41,16 @@ var domain = {
         img: {
             domain: '101.132.147.139',
             host: '80'
-        }
+        },
+        contentStratege: 'outter'
     }
 };
 
 function config() {
     this.env = process.env.env || 'dev';
     this.domain = domain[this.env];
-    this.port = domain[this.env].website.host
+    this.port = domain[this.env].website.host;
+    this.contentStratege = domain[this.env].contentStratege;
 }
 
 config.prototype.getUrl = function(type) {

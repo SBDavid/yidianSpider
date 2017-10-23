@@ -8,6 +8,27 @@ var articleApi = require('../../../../fetchAtical/persistence/api/article'),
 var contentUrl = config.getUrl('img') + '/img/content/',
     staticUrl = config.getUrl('img') + '/img/static/';
 
+var contentStrateges = {
+
+    inner: function(content) {
+        if (content.animated === true) {
+            content.url = staticUrl + content.filename; 
+            content.animatedurl = contentUrl + content.filename;
+        } else {
+            content.url = contentUrl + content.filename; 
+        }
+        return content; 
+    },
+    outter: function(content) {
+        if (content.animated === true) {
+            content.animatedurl = content.url;
+            content.url =`${content.url}&type=thumbnail_${content.width}x${content.height}`; 
+        } else {
+            content.url = content.url; 
+        }
+        return content; 
+    }
+}
 
 var getArticleListItem = function(article) {
 
@@ -26,15 +47,7 @@ var getArticleListItem = function(article) {
     return {
         title: article.title,
         itemid: article.itemid,
-        content: article.images.content.map(item => {
-            if (item.animated === true) {
-                item.url = staticUrl + item.filename; 
-                item.animatedurl = contentUrl + item.filename;
-            } else {
-                item.url = contentUrl + item.filename; 
-            }
-            return item; 
-        }),
+        content: article.images.content.map(contentStrateges[config.contentStratege]),
         date: date
     }
 }
