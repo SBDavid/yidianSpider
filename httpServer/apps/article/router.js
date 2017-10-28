@@ -22,6 +22,9 @@ router.get('/:itemid', function (req, res) {
     .then(function(articles){
         res.render('article', {
             domain: config.domain,
+            title: articles[0].title,
+            keywords: articles[0].title,
+            description: articles[0].title,
             article: articles[0]
         });
     })

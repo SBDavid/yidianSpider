@@ -30,7 +30,9 @@ router.get('/', function (req, res) {
     .then(function(articles){
         res.render('list', {
             domain: config.domain,
-            title: "嘻唰唰",
+            title: "嘻唰唰 搞笑图片",
+            keywords: "搞笑图片 搞笑 gif",
+            description: '搞笑gif图片，每日刷新',
             articles: articles
         });
     })
