@@ -7,7 +7,6 @@ html
 		link(rel='stylesheet', href='http://' + domain.static.domain + ':' + domain.static.host + '/static/css/base.css')
 		link(rel='stylesheet', href='http://' + domain.static.domain + ':' + domain.static.host + '/article/static/css/article.css')
 		include ../../common/views/mobileRem.pug
-		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static/js/jquery.js')
 		include ../../common/views/sta.pug
 	body
 		div.header.bottom-1px
@@ -27,4 +26,6 @@ html
 
 						else
 							img(src=imageInfo.url)
+		
+		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static/js/jquery.js')
 		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static/js/article.js')
