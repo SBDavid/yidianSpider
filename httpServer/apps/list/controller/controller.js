@@ -32,7 +32,7 @@ var getArticleListItem = function(article) {
 
 module.exports = function() {
     return new Promise(function(resolve, reject) {
-        articleApi.find({images: {$ne: null}}, 30)
+        articleApi.find({images: {$ne: null}, hide: false}, 30)
         .then(function(articles) {
             resolve(articles.map(item => {return getArticleListItem(item)}));
         })
