@@ -17,13 +17,14 @@ app.use('/static', express.static('static'));
 app.use('/img', express.static('../images'));
 
 // routers
+app.use('/', require('./apps/list/router'));
 app.use('/list', require('./apps/list/router'));
 app.use('/article', require('./apps/article/router'));
 
 // 重定向到首页
-app.use('/', function (req, res){
+/* app.use('/', function (req, res){
 	res.redirect('/list');
-});
+}); */
 
 var server = app.listen(config.port, function () {
 	debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(config.port));
