@@ -47,19 +47,30 @@ var getArticleListItem = function(article) {
     return {
         title: article.title,
         itemid: article.itemid,
+        readAcount: article.readAcount,
         content: article.images.content.map(contentStrateges[config.contentStratege]),
         date: date
     }
 }
 
 module.exports = function(itemid) {
+    var targetArticle = null;
     return new Promise(function(resolve, reject) {
         articleApi.find({
             images: {$ne: null},
             itemid: itemid
-        }, 10)
+        }, 1)
         .then(function(articles) {
-            resolve(articles.map(item => {return getArticleListItem(item)}));
+            if (articles.length === 0) {
+                debug(chalk.red('获取文章列表错误，没有找到文章 itemId:'), chalk.bgRed(itemid));
+                reject('获取文章列表错误，没有找到文章');
+            }
+            targetArticle = getArticleListItem(articles[0]);
+            // 阅读数+1
+            return articleApi.update({itemid: itemid}, {readAcount: targetArticle.readAcount + 1 || 0});
+        })
+        .then(function(){
+            resolve(targetArticle);
         })
         .catch(function(err) {
             debug(chalk.red('获取文章列表错误'), chalk.bgRed(err));

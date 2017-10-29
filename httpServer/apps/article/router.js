@@ -19,13 +19,13 @@ router.use('/static', express.static(__dirname + '/static'));
 
 router.get('/:itemid', function (req, res) {
     controller(req.params.itemid)
-    .then(function(articles){
+    .then(function(article){
         res.render('article', {
             domain: config.domain,
-            title: articles[0].title,
-            keywords: articles[0].title,
-            description: articles[0].title,
-            article: articles[0]
+            title: article.title,
+            keywords: article.title,
+            description: article.title,
+            article: article
         });
     })
 });
