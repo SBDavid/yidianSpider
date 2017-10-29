@@ -24,6 +24,7 @@ var getArticleListItem = function(article) {
     return {
         title: article.title,
         itemid: article.itemid,
+        readCount: article.readCount,
         surface: article.images.surface.map(item => { return surfaceUrl + item.filename }),
         date: date
     }

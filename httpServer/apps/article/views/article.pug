@@ -12,7 +12,10 @@ html
 	body
 		div.header.bottom-1px
 			h1 #{article.title}
-			div(class='article-info') #{article.date}
+			div(class='article-info') 
+				span #{article.date}
+				if article.readCount > 0
+					span #{'阅读 ' + article.readCount}
 		div.body
 			ul
 				each imageInfo in article.content

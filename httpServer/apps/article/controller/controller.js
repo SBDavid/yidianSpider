@@ -31,7 +31,6 @@ var contentStrateges = {
 }
 
 var getArticleListItem = function(article) {
-
     var timePassed = dateUtils.timeFromNowYidian(article.date);
     var date;
     if (timePassed.minutes < 60) {
@@ -47,7 +46,7 @@ var getArticleListItem = function(article) {
     return {
         title: article.title,
         itemid: article.itemid,
-        readAcount: article.readAcount,
+        readCount: article.readCount,
         content: article.images.content.map(contentStrateges[config.contentStratege]),
         date: date
     }
@@ -67,7 +66,7 @@ module.exports = function(itemid) {
             }
             targetArticle = getArticleListItem(articles[0]);
             // 阅读数+1
-            return articleApi.update({itemid: itemid}, {readAcount: targetArticle.readAcount + 1 || 0});
+            return articleApi.update({itemid: itemid}, {readCount: targetArticle.readCount + 1 || 0});
         })
         .then(function(){
             resolve(targetArticle);

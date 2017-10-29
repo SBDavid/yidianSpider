@@ -168,3 +168,6 @@
   font-size: 0.24rem;
   color: #999;
 }
+.body .article-list-item .article-info span {
+  margin-right: .15rem;
+}

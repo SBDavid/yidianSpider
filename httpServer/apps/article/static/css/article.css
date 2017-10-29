@@ -134,11 +134,18 @@
   font-size: 0.48rem;
   color: #222;
   font-weight: bold;
-  margin-bottom: 0.2rem;
+  margin-bottom: .2rem;
 }
 .header .article-info {
+  color: #fb3d2f;
+}
+.header .article-info span {
   font-size: 0.24rem;
-  color: #999;
+  margin-right: .15rem;
+  color: #fff;
+  padding: .05rem;
+  border-radius: .05rem;
+  background-color: #fb3d2f;
 }
 .body {
   padding: 0.2rem 0.2rem;

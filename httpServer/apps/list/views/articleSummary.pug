@@ -5,4 +5,7 @@ mixin article(article)
             each img in article.surface
                 li
                     img(src=img, alt="")
-        p.article-info #{article.date}
+        p.article-info 
+            span #{article.date}
+            if article.readCount > 0
+                span #{'阅读' + article.readCount}

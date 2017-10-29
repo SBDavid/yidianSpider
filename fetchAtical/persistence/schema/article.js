@@ -9,7 +9,7 @@ var articleSchema = mongoose.Schema({
     url: { type: String },
     category: { type: String },
     images: { type: Object, default: null },
-    readAcount: { type: Number, default: 0 },
+    readCount: { type: Number, default: 0 },
     hide: {type: Boolean, default: false}
 }, { 
     autoIndex: false,
