@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "restart": "echo \"重新启动HTTP Server\" && pm2 delete 0 && cross-env DEBUG=httpServer:* env=beian pm2 start app.js",
-    "start": "echo \"启动HTTP Server\" && cross-env DEBUG=httpServer:* env=beian pm2 start app.js"
+    "restart": "echo \"**** 重新启动HTTP Server ****\" && pm2 delete 0 && cross-env DEBUG=httpServer:* env=beian pm2 start app.js",
+    "start": "echo \"**** 启动HTTP Server ****\" && cross-env DEBUG=httpServer:* env=beian pm2 start app.js",
+    "stop": "echo \"**** 停止HTTP Server ****\" && pm2 delete 0"
   },
   "author": "",
   "license": "ISC",
