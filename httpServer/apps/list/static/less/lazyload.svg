@@ -1,0 +1,17 @@
+<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="#f1f1f1" id="canvas_background" height="202" width="322" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <text stroke="#000" transform="matrix(33.96786622076411,0,0,9.763445932528612,-12416.6322554334,-1388.0496201346104) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_1" y="169.9" x="368" stroke-width="0" fill="#000000"/>
+  <text stroke="#000" transform="matrix(13.025311122800076,0,0,3.407240447798017,-2096.4456801656997,-215.07747973683186) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_2" y="97.9" x="166.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="#000000"/>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="'Times New Roman', Times, serif" font-size="60" id="svg_8" y="120.407812" x="70" stroke-width="0" stroke="#bf1a1a" fill="#999999">嘻唰唰</text>
+ </g>
+</svg>

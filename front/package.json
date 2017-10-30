@@ -8,6 +8,7 @@
   "author": "SBDavid",
   "license": "ISC",
   "dependencies": {
+    "jquery-lazyload": "^1.9.7"
   },
   "devDependencies": {
     "webpack": "^3.1.0"
