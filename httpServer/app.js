@@ -6,6 +6,10 @@ var app = express();
 
 var config = require('./apps/config');
 
+// gzip
+var compression = require('compression');
+app.use(compression());
+
 // app config
 app.set('view engine', 'pug');
 app.set('views', ['./apps/list/views', './apps/article/views']);
