@@ -30,6 +30,12 @@ app.use('/article', require('./apps/article/router'));
 	res.redirect('/list');
 }); */
 
-var server = app.listen(config.port, function () {
-	debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(config.port));
-});
+/* 缓存加载 */
+var cacheCont = require('./apps/cache/cacheContainer');
+cacheCont.init()
+.then(function(){
+	var server = app.listen(config.port, function () {
+		debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(config.port));
+	});
+})
+

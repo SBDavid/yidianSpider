@@ -23,13 +23,14 @@ articleApi.prototype = {
      * 查询article信息
      * @param article Object 查询参数
      * @param limit Number 最大数量, 默认10条
+     * @param sort Object 排序, 默认日期倒排
      */
-    find: function(article, limit) {
-        limit = (limit && limit <= 100) ? limit : 10;
+    find: function(article, limit, sort) {
+        limit = (limit && limit <= 500) ? limit : 10;
         var query =  artileModel.find(Object.assign({}, article));
         return new Promise(function(resolve, reject) {
             query
-            .sort({date: -1 })
+            .sort({date: -1 } || sort)
             .limit(limit)
             .exec(function(err, res) {
                 if (err) {
