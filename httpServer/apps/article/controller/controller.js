@@ -8,7 +8,7 @@ module.exports = function(itemid) {
     return new Promise(function(resolve, reject) {
         Promise.resolve(cache.get('lastestArticle', {
             filter: function(item) {
-                return item.itemid = itemid;
+                return item.itemid === itemid;
             }
         }))
         .then(function(articles) {
@@ -20,6 +20,11 @@ module.exports = function(itemid) {
             // 阅读数+1
             articleApi.update({itemid: itemid}, {readCount: targetArticle.readCount + 1 || 0});
             targetArticle.readCount++;
+            cache.get('lastestList', {
+                filter: function(item) {
+                    return item.itemid === itemid;
+                }
+            }).data[0].readCount++;
             return Promise.resolve();
         })
         .then(function(){
