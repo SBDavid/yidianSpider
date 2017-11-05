@@ -1,7 +1,7 @@
 var debug = require('debug')('httpServer:controller');
 var chalk = require('chalk');
 
-/* var articleApi = require('../../../../fetchAtical/persistence/api/article'),
+var articleApi = require('../../../../fetchAtical/persistence/api/article'),
     dateUtils = new (require('../../common/utils/date'))(),
     config = require('../../config');
 
@@ -28,9 +28,9 @@ var getArticleListItem = function(article) {
         surface: article.images.surface.map(item => { return surfaceUrl + item.filename }),
         date: date
     }
-} */
+}
 
-/* module.exports = function() {
+module.exports = function() {
     return new Promise(function(resolve, reject) {
         articleApi.find({images: {$ne: null}, hide: false}, 30)
         .then(function(articles) {
@@ -41,12 +41,12 @@ var getArticleListItem = function(article) {
             reject(err);
         })
     });
-} */
+}
 
 
-var cacheCont = require('../../cache/cacheContainer');
+/* var cacheCont = require('../../cache/cacheContainer');
 module.exports = function() {
     return new Promise(function(resolve, reject) {
         resolve(cacheCont.get('lastestList', 0, 30).data);
     });
-}
+} */
