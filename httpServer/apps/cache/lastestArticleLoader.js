@@ -7,8 +7,29 @@ var articleApi = require('../../../fetchAtical/persistence/api/article'),
 var surfaceUrl = config.getUrl('img') + '/img/surface/',
     staticUrl = config.getUrl('img') + '/img/static/';
 
-var getArticleListItem = function(article) {
+var contentStrateges = {
     
+    inner: function(content) {
+        if (content.animated === true) {
+            content.url = staticUrl + content.filename; 
+            content.animatedurl = contentUrl + content.filename;
+        } else {
+            content.url = contentUrl + content.filename; 
+        }
+        return content; 
+    },
+    outter: function(content) {
+        if (content.animated === true) {
+            content.animatedurl = content.url;
+            content.url =`${content.url}&type=thumbnail_${content.width}x${content.height}`; 
+        } else {
+            content.url = content.url; 
+        }
+        return content; 
+    }
+}
+
+var getArticleListItem = function(article) {
     var timePassed = dateUtils.timeFromNowYidian(article.date);
     var date;
     if (timePassed.minutes < 60) {
@@ -25,7 +46,7 @@ var getArticleListItem = function(article) {
         title: article.title,
         itemid: article.itemid,
         readCount: article.readCount,
-        surface: article.images.surface.map(item => { return surfaceUrl + item.filename }),
+        content: article.images.content.map(contentStrateges[config.contentStratege]),
         date: date
     }
 }
@@ -43,7 +64,7 @@ var loader = function() {
     })
 }
 
-loader.loaderName = 'lastestList';
+loader.loaderName = 'lastestArticle';
 
 module.exports = loader;
 

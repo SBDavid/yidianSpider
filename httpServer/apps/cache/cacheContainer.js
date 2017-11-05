@@ -2,7 +2,8 @@
 var debug = require('debug')('httpServer:cache');
 var chalk = require('chalk');
 
-var lastestListLoader = new require('./lastestListLoader');
+var lastestListLoader = new require('./lastestListLoader'),
+    lastestArticleLoader = new require('./lastestArticleLoader');
 
 var cacheContainer = function() {
     this.cache = {};
@@ -25,7 +26,14 @@ cacheContainer.prototype.load = function(loader) {
     })
 }
 
-cacheContainer.prototype.get = function(cacheName, start, end) {
+cacheContainer.prototype.get = function(cacheName, opt) {
+    opt = Object.assign({
+        start: 0,
+        end: 100,
+        filter: function(item) {
+            return true;
+        }
+    }, opt)
     if (this.cache.cacheName) {
         return {
             data: [],
@@ -33,7 +41,7 @@ cacheContainer.prototype.get = function(cacheName, start, end) {
         }
     } else {
         return {
-            data: this.cache[cacheName].slice(start, end),
+            data: this.cache[cacheName].slice(opt.start, opt.end).filter(opt.filter),
             total: this.cache[cacheName].length
         }
     }
@@ -42,7 +50,7 @@ cacheContainer.prototype.get = function(cacheName, start, end) {
 cacheContainer.prototype.init = function() {
     var self = this;
 
-    var loaders = [self.load(lastestListLoader)];
+    var loaders = [self.load(lastestListLoader), self.load(lastestArticleLoader)];
 
     return new Promise(function(resolve, reject) {
         Promise.all(loaders)
