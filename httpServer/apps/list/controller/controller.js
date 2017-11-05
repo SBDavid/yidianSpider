@@ -1,7 +1,7 @@
 var debug = require('debug')('httpServer:controller');
 var chalk = require('chalk');
 
-/* var articleApi = require('../../../../fetchAtical/persistence/api/article'),
+var articleApi = require('../../../../fetchAtical/persistence/api/article'),
     dateUtils = new (require('../../common/utils/date'))(),
     config = require('../../config');
 
@@ -41,12 +41,12 @@ module.exports = function() {
             reject(err);
         })
     });
-} */
+}
 
 
-var cacheCont = require('../../cache/cacheContainer');
+/* var cacheCont = require('../../cache/cacheContainer');
 module.exports = function() {
     return new Promise(function(resolve, reject) {
         resolve(cacheCont.get('lastestList', 0, 30).data);
     });
-}
+} */
