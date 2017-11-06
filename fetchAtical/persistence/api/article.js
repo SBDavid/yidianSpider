@@ -32,6 +32,7 @@ articleApi.prototype = {
             query
             .sort({date: -1 } || sort)
             .limit(limit)
+            .slice('images.content',20)
             .exec(function(err, res) {
                 if (err) {
                     debug(chalk.red('article查找失败 查询条件:'), chalk.red(article), chalk.red(err));
