@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "beian": "cross-env env=beian webpack -w --colors --profile"
+    "dev": "cross-env env=beian NODE_ENV=dev webpack -w --colors --profile",
+    "pro": "cross-env env=beian NODE_ENV=production webpack --colors --profile"
   },
   "author": "SBDavid",
   "license": "ISC",
@@ -12,6 +13,7 @@
   },
   "devDependencies": {
     "cross-env": "^5.1.1",
-    "webpack": "^3.1.0"
+    "webpack": "^3.1.0",
+    "webpack-uglify-parallel": "^0.1.4"
   }
 }
