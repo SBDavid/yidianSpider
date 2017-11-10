@@ -18,13 +18,8 @@ module.exports = function(itemid) {
             }
             targetArticle = articles.data[0];
             // 阅读数+1
-            articleApi.update({itemid: itemid}, {readCount: targetArticle.readCount + 1 || 0});
-            targetArticle.readCount++;
-            cache.get('lastestList', {
-                filter: function(item) {
-                    return item.itemid === itemid;
-                }
-            }).data[0].readCount++;
+            articleApi.update({itemid: itemid}, {$inc: {readCount: 1}});
+            
             return Promise.resolve();
         })
         .then(function(){
