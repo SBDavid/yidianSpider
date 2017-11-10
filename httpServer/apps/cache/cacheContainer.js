@@ -47,21 +47,19 @@ cacheContainer.prototype.get = function(cacheName, opt) {
     }
 }
 
-cacheContainer.prototype.init = function() {
+/* 初始化或则刷新缓存 */
+cacheContainer.prototype.init = async function() {
+    
     var self = this;
-
-    var loaders = [self.load(lastestListLoader), self.load(lastestArticleLoader)];
-
-    return new Promise(function(resolve, reject) {
-        Promise.all(loaders)
-        .then(function(){
-            debug(chalk.grey('缓存加载结束'));
-            resolve(true);
-        }, function(err){
-            debug(chalk.red('缓存加载失败'), chalk.bgRed(err));
-            reject(err);
-        })
-    });
+    var loaders = [lastestListLoader, lastestArticleLoader];
+    try {
+        for (var i = 0; i < loaders.length; i++) {
+            await self.load(loaders[i]);
+        }
+    } catch(err) {
+        debug(chalk.red('缓存加载失败'), chalk.bgRed(err));
+    }
+    debug(chalk.grey('缓存加载结束'));
 }
 
 var cacheCont = new cacheContainer();

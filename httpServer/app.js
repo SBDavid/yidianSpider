@@ -32,10 +32,18 @@ app.use('/article', require('./apps/article/router'));
 
 /* 缓存加载 */
 var cacheCont = require('./apps/cache/cacheContainer');
+/* 缓存刷新 */
+var cacheFresh = require('./apps/schedule/cache');
+
 cacheCont.init()
 .then(function(){
 	var server = app.listen(config.port, function () {
 		debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(config.port));
+
+		return Promise.resolve()
 	});
+})
+.then(function() {
+	cacheFresh.start();
 })
 
