@@ -16,18 +16,18 @@ var domain = {
     },
     pro: {
         website: {
-            domain: 'fungif.xishuashua.site',
+            domain: 'm.xishuashua.site',
             host: '80'
         },
         static: {
-            domain: 'fungif.xishuashua.site',
+            domain: 'm.xishuashua.site',
             host: '80'
         },
         img: {
-            domain: 'fungif.xishuashua.site',
+            domain: 'm.xishuashua.site',
             host: '80'
         },
-        contentStratege: 'inner'
+        contentStratege: 'outter'
     },
     beian: {
         website: {
