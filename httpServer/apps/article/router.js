@@ -7,7 +7,7 @@ var controller = require('./controller/controller');
 
 router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
     dest: __dirname + '/static/css',
-    force: true,
+    force: false,
     debug: false,
     render: {
         compress: false
