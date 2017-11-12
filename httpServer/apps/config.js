@@ -1,15 +1,15 @@
 var domain = {
     dev: {
         website: {
-            domain: 'xwm.com',
+            domain: 'localhost',
             host: '81'
         },
         static: {
-            domain: 'static.xwm.com',
+            domain: 'localhost',
             host: '81'
         },
         img: {
-            domain: 'img.xwm.com',
+            domain: 'localhost',
             host: '81'
         },
         contentStratege: 'outter'

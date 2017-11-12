@@ -30,7 +30,7 @@ articleApi.prototype = {
         var query =  artileModel.find(Object.assign({}, article));
         return new Promise(function(resolve, reject) {
             query
-            .sort({date: -1 } || sort)
+            .sort( sort || {date: -1 })
             .limit(limit)
             .slice('images.content',20)
             .exec(function(err, res) {

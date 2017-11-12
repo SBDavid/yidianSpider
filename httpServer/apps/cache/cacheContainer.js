@@ -2,7 +2,7 @@
 var debug = require('debug')('httpServer:cache');
 var chalk = require('chalk');
 
-var lastestListLoader = new require('./lastestListLoader'),
+var listLoader = new require('./listLoader'),
     lastestArticleLoader = new require('./lastestArticleLoader');
 
 var cacheContainer = function() {
@@ -34,7 +34,7 @@ cacheContainer.prototype.get = function(cacheName, opt) {
             return true;
         }
     }, opt)
-    if (this.cache.cacheName) {
+    if (this.cache[cacheName] === undefined) {
         return {
             data: [],
             total: 0
@@ -51,7 +51,7 @@ cacheContainer.prototype.get = function(cacheName, opt) {
 cacheContainer.prototype.init = async function() {
     
     var self = this;
-    var loaders = [lastestListLoader, lastestArticleLoader];
+    var loaders = [listLoader.lastestList, listLoader.mostViewedList, lastestArticleLoader];
     try {
         for (var i = 0; i < loaders.length; i++) {
             await self.load(loaders[i]);

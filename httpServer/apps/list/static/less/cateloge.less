@@ -1,0 +1,25 @@
+@import (less) "../../../common/style/fontsize.less";
+@import (less) "../../../common/style/container.less";
+@import (less) "../../../common/style/utils.less";
+@import (less) "../../../common/style/onepx.less";
+@import (less) "../../../common/style/color.less";
+
+.cateloge-container {
+    li {
+        font-size: @font-size-normal;
+        line-height: .76rem;
+        color: @common-grey;
+        padding: 0 .6rem;
+        display: inline-block;
+    }
+
+    li a:visited {
+        color: @common-grey;
+    }
+
+    li.cur {
+        font-weight: bold;
+        color: @common-red;
+        border-bottom: .04rem @common-red solid;
+    }
+}

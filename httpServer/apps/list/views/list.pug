@@ -10,8 +10,11 @@ html
 		include ../../common/views/sta.pug
 	body
 		include ./articleSummary.pug
+		include ./cateloge.pug
 		div.header
 			h1 #{title}
+		div(class='cateloge-container')
+			+cateloge(cateloge)
 		div.body
 			ul
 				each article in articles

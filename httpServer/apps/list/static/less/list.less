@@ -4,18 +4,29 @@
 @import (less) "../../../common/style/onepx.less";
 @import (less) "../../../common/style/color.less";
 
+@import (less) "./cateloge.less";
+
 .header {
 
-    height: .8rem;
     background-color: @common-red;
     box-sizing: border-box;
 
     h1{
-        font-size: @font-size-normal;
+        font-size: @font-size-large;
         color: @common-white;
         line-height: .8rem;
         padding: 0 @cont-padding;
+        text-align: center;
+        font-weight: bold;
     }
+}
+
+.cateloge-container {
+    position: sticky;
+    top: 0;
+    height: .8rem;
+    z-index: 1000;
+    background-color: @trans-red
 }
 
 .body {

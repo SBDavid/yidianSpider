@@ -1,0 +1,8 @@
+mixin cateloge(cateloge)
+    ul
+        each c in cateloge.cateloges
+            if c.isCurrent
+                li(class='cur') #{c.title}
+            else 
+                li
+                    a(href=c.url) #{c.title}
