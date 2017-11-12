@@ -1,6 +1,7 @@
 var debug = require('debug')('httpServer:app');
 var chalk = require('chalk');
 
+var path = require('path');
 var express = require('express');
 var app = express();
 
@@ -16,19 +17,19 @@ app.set('views', ['./apps/list/views', './apps/article/views']);
 
 // public static file
 app.use('/static', express.static('static'));
+app.use('/static1', express.static(path.resolve(__dirname, '../front/dist')));
 
 // 图片资源
 app.use('/img', express.static('../images'));
 
 // routers
-app.use('/', require('./apps/list/router'));
 app.use('/list', require('./apps/list/router'));
 app.use('/article', require('./apps/article/router'));
 
 // 重定向到首页
-/* app.use('/', function (req, res){
+app.use('/', function (req, res){
 	res.redirect('/list');
-}); */
+});
 
 /* 缓存加载 */
 var cacheCont = require('./apps/cache/cacheContainer');

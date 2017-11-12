@@ -129,9 +129,11 @@
 .cateloge-container li {
   font-size: 0.36rem;
   line-height: .76rem;
-  color: #999;
   padding: 0 .6rem;
   display: inline-block;
+}
+.cateloge-container li a {
+  color: #999;
 }
 .cateloge-container li a:visited {
   color: #999;
@@ -154,11 +156,14 @@
   font-weight: bold;
 }
 .cateloge-container {
-  position: sticky;
-  top: 0;
   height: .8rem;
   z-index: 1000;
   background-color: #ffe8e7;
+  width: 100%;
+}
+.cateloge-container.sticky {
+  position: fixed;
+  top: 0;
 }
 .body {
   padding: 0 0.2rem;

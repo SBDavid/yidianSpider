@@ -22,12 +22,15 @@
 }
 
 .cateloge-container {
-    position: -webkit-sticky!important;
-    position: sticky;
-    top: 0;
     height: .8rem;
     z-index: 1000;
-    background-color: @trans-red
+    background-color: @trans-red;
+    width: 100%;
+}
+
+.cateloge-container.sticky {
+    position:fixed;
+    top:0
 }
 
 .body {

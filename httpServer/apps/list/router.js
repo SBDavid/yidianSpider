@@ -24,11 +24,11 @@ function getList(req, res, listType) {
     })
 }
 
-router.get('/list', function(req, res) {
+router.get('/', function(req, res) {
     getList(req, res, 'lastestList');
 });
 
-router.get('/list/:listType', function (req, res) {
+router.get('/:listType', function (req, res) {
     getList(req, res, req.params.listType);
 });
 
