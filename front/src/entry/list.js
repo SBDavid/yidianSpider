@@ -1,6 +1,6 @@
 require('jquery-lazyload');
 
-var utils = require('./common/utils');
+var utils = require('../common/utils');
 
 $("img[data-original]").lazyload({
     failurelimit : 10,

@@ -9,7 +9,7 @@ html
 		include ../../common/views/mobileRem.pug
 		include ../../common/views/sta.pug
 	body
-		include ./articleSummary.pug
+		include ../../common/views/articleSummary.pug
 		include ./cateloge.pug
 		div.header
 			h1 #{title}
@@ -20,7 +20,7 @@ html
 			ul
 				each article in articles
 					li
-						+article(article)
+						+article(article, cateloge.currentCateloge, article.index)
 						
 		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static/js/jquery.js')
 		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static1/list.js')

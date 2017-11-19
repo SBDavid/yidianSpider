@@ -20,7 +20,7 @@ module.exports = function(listType) {
             resolve(
                 {
                     domain: config.domain,
-                    title: "嘻唰唰 搞笑图片",
+                    title: "嘻唰唰 搞笑图片 搞笑 gif 搞笑动图",
                     keywords: "搞笑图片 搞笑 gif 搞笑动图",
                     description: '搞笑gif图片，每日刷新',
                     articles: articles,
@@ -36,7 +36,8 @@ module.exports = function(listType) {
                                 url: config.getUrl('website') + '/list/mostViewedList',
                                 isCurrent: 'mostViewedList' === listType
                             }
-                        ]
+                        ],
+                        currentCateloge: listType
                     }
                 }
             );

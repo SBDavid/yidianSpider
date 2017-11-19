@@ -3,6 +3,7 @@
 @import (less) "../../../common/style/utils.less";
 @import (less) "../../../common/style/onepx.less";
 @import (less) "../../../common/style/color.less";
+@import (less) "../../../common/style/articleSummary.less";
 
 .header {
     padding: .2rem @cont-padding;
@@ -31,7 +32,10 @@
 .body {
     padding: .2rem @cont-padding;
 
-    ul {
+    ul.pics {
+        margin-bottom: .8rem;
+        position: relative;
+        padding-bottom: .2rem;
         li {
             list-style: none;
             display: block;
@@ -59,6 +63,19 @@
                     background-repeat: no-repeat;
                 }
             }
+        }
+    }
+
+    .related-articles {
+        
+        >.title {
+            color: @common-red;
+            line-height: 0.8rem;
+            font-size: @font-size-large;
+            background-color: @trans-red;
+            margin-left: -@cont-padding;
+            margin-right: -@cont-padding;
+            padding-left: @cont-padding;
         }
     }
 }

@@ -9,7 +9,8 @@
   "author": "SBDavid",
   "license": "ISC",
   "dependencies": {
-    "jquery-lazyload": "^1.9.7"
+    "jquery-lazyload": "^1.9.7",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "cross-env": "^5.1.1",

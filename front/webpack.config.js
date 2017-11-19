@@ -12,9 +12,9 @@ let getEntry = (dir) => {
 		entryObj[path.basename(item, '.js')] = dir + item;
 	});
 }
-getEntry('./src/');
+getEntry('./src/entry/');
 
-var config = {
+var webpackConfig = {
 	devtool: process.env.NODE_ENV == 'production' ? false : "source-map",
 	entry: entryObj,
 	output: {
@@ -29,7 +29,7 @@ var config = {
 };
 
 if (process.env.NODE_ENV == 'production') {
-	config.plugins.push(new UglifyJsParallelPlugin({
+	webpackConfig.plugins.push(new UglifyJsParallelPlugin({
 		workers: os.cpus().length,
 		mangle: true,
 		comments: false,
@@ -39,4 +39,4 @@ if (process.env.NODE_ENV == 'production') {
 	}));
 }
 
-module.exports = config;
+module.exports = webpackConfig;

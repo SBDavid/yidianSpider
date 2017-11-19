@@ -9,6 +9,7 @@ html
 		include ../../common/views/mobileRem.pug
 		include ../../common/views/sta.pug
 	body
+		include ../../common/views/articleSummary.pug
 		div.header.bottom-1px
 			h1 #{article.title}
 			div(class='article-info') 
@@ -16,7 +17,7 @@ html
 				if article.readCount > 0
 					span #{'阅读 ' + article.readCount}
 		div.body
-			ul
+			ul(class='pics bottom-1px') 
 				each imageInfo in article.content
 					li
 						if imageInfo.animatedurl
@@ -26,6 +27,13 @@ html
 
 						else
 							img(src=imageInfo.url)
+			if article.relatedArticle.length > 0
+				div.related-articles
+					div.title 相关文章
+					ul
+						each item in article.relatedArticle
+							li
+								+article(item, article.relatedArticle.currentCateloge, item.index)
 		
 		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static/js/jquery.js')
 		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static1/article.js')

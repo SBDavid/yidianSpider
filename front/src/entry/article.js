@@ -1,5 +1,7 @@
 var gifContainer = $('.body');
 
+require('../common/readcount');
+
 function openGif(currentTarget) {
     var animatedCont = $(currentTarget).parent('.animatedCont');
 

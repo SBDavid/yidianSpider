@@ -23,8 +23,12 @@ app.use('/static1', express.static(path.resolve(__dirname, '../front/dist')));
 app.use('/img', express.static('../images'));
 
 // routers
+/* 文章列表 */
 app.use('/list', require('./apps/list/router'));
+/* 文章详情 */
 app.use('/article', require('./apps/article/router'));
+/* 数据接口 */
+app.use('/apis', require('./apis/router'));
 
 // 重定向到首页
 app.use('/', function (req, res){

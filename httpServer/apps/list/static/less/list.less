@@ -3,6 +3,7 @@
 @import (less) "../../../common/style/utils.less";
 @import (less) "../../../common/style/onepx.less";
 @import (less) "../../../common/style/color.less";
+@import (less) "../../../common/style/articleSummary.less";
 
 @import (less) "./cateloge.less";
 
@@ -40,44 +41,7 @@
 .body {
     padding: 0 @cont-padding;
 
-    .article-list-item {
-        position: relative;
-        display: block;
-
-        .title {
-            padding: .15rem 0;
-            color: @common-black;
-        }
-        .img-list {
-            li {
-                list-style: none;
-                float: left;
-                margin-left: .05rem;
-                width: 2.33rem;
-                height: 1.456rem;
-                overflow: hidden;
-
-                img {
-                    width: 2.33rem;
-                    height: 1.456rem;
-                    background-image: url('./lazyload.svg');
-                    background-position: 100% 50%;
-                    background-size: 2.33rem 1.456rem;
-                    background-repeat: no-repeat;
-                }
-            }
-            :first-child {
-                margin-left: 0;
-            }
-        }
-        .article-info {
-            padding: .1rem 0;
-            font-size: @font-size-small;
-            color: @common-grey;
-
-            span {
-                margin-right: .15rem;
-            }
-        }
+    ul {
+        margin-bottom: .24rem;
     }
 }

@@ -12,6 +12,10 @@ var domain = {
             domain: 'localhost',
             host: '81'
         },
+        api: {
+            domain: 'localhost',
+            host: '81'
+        },
         contentStratege: 'outter'
     },
     pro: {
@@ -27,6 +31,10 @@ var domain = {
             domain: 'm.xishuashua.site',
             host: '80'
         },
+        api: {
+            domain: 'm.xishuashua.site',
+            host: '80'
+        },
         contentStratege: 'outter'
     },
     beian: {
@@ -39,6 +47,10 @@ var domain = {
             host: '80'
         },
         img: {
+            domain: '101.132.147.139',
+            host: '80'
+        },
+        api: {
             domain: '101.132.147.139',
             host: '80'
         },

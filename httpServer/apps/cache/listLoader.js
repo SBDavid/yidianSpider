@@ -6,7 +6,7 @@ var articleApi = require('../../../fetchAtical/persistence/api/article'),
 
 var surfaceUrl = config.getUrl('img') + '/img/surface/';
 
-var getArticleListItem = function (article) {
+var getArticleListItem = function (article, index) {
 
     var timePassed = dateUtils.timeFromNowYidian(article.date);
     var date;
@@ -21,6 +21,7 @@ var getArticleListItem = function (article) {
         date = dateUtils.getNormalFormatDate(moment);
     }
     return {
+        index: index,
         title: article.title,
         itemid: article.itemid,
         readCount: article.readCount,
@@ -34,7 +35,7 @@ var loader = function (condition, amount, sort) {
         return new Promise(function (resolve, reject) {
             articleApi.find(condition, amount, sort)
                 .then(function (articles) {
-                    resolve(articles.map(item => { return getArticleListItem(item) }));
+                    resolve(articles.map((item, index) => { return getArticleListItem(item, index) }));
                 })
                 .catch(function (err) {
                     debug(chalk.red('获取文章列表错误'), chalk.bgRed(err));
