@@ -2,6 +2,12 @@ var gifContainer = $('.body');
 
 require('../common/readcount');
 
+require('jquery-lazyload');
+$("img[data-original]").lazyload({
+    failurelimit : 10,
+    placeholder: STATIC_URL + '/list/static/css/lazyload.svg'
+});
+
 function openGif(currentTarget) {
     var animatedCont = $(currentTarget).parent('.animatedCont');
 
