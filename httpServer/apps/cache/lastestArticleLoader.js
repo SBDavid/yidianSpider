@@ -51,9 +51,13 @@ var getArticleListItem = function(article) {
     }
 }
 
-var loader = function() {
+var loaderBase = function(condition, amount) {
+
+    condition = Object.assign({images: {$ne: null}, hide: false}, condition);
+    amount = amount || 100;
+
     return new Promise(function(resolve, reject) {
-        articleApi.find({images: {$ne: null}, hide: false}, 100)
+        articleApi.find(condition, amount)
         .then(function(articles) {
             resolve(articles.map(item => {return getArticleListItem(item)}));
         })
@@ -64,7 +68,19 @@ var loader = function() {
     })
 }
 
+var loader = function() {
+    return loaderBase({images: {$ne: null}, hide: false}, 100);
+}
+
+var loaderAdd = function(condition, amount) {
+    return loaderBase(condition, amount);
+}
+
 loader.loaderName = 'lastestArticle';
 
-module.exports = loader;
+module.exports = {
+    loader,
+    loaderAdd,
+    loaderName: 'lastestArticle'
+};
 

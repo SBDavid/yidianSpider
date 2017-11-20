@@ -13,7 +13,7 @@ cacheContainer.prototype.load = function(loader) {
     var self = this;
     
     return new Promise(function(resolve, reject) {
-        loader()
+        loader.loader()
         .then(function(data){
             self.cache[loader.loaderName] = data;
             debug(chalk.grey('缓存加载成功'), chalk.yellow(loader.loaderName), chalk.yellow('数量：'), chalk.yellow(data.length));
@@ -47,14 +47,50 @@ cacheContainer.prototype.get = function(cacheName, opt) {
     }
 }
 
+/* 异步方式获取缓存，如果缓存中没有则从数据库加载 */
+cacheContainer.prototype.getAsync = function(cacheName, opt) {
+    var self = this;
+    var cacheData = this.get(cacheName, opt);
+    if (cacheData.data.length > 0) {
+        return Promise.resolve(cacheData);
+    }
+    return new Promise(function(resolve, reject) {
+        // 查找loader
+        var loader = self.loaders.filter(function(item){
+            return item.loaderName === cacheName;
+        })
+        
+        // 没有找到loader
+        if (loader.length === 0) {
+            resolve({
+                data: [],
+                total: 0
+            });
+        }
+        // 执行二次加载
+        loader[0].loaderAdd(opt.condition, opt.amount)
+        .then(function(data) {
+            if (data.length === 0) {
+                resolve({
+                    data: [],
+                    total: 0
+                });
+            } else {
+                Array.prototype.push.apply(self.cache[cacheName], data);
+                resolve(self.get(cacheName, opt));
+            }
+        })
+    });
+}
+
 /* 初始化或则刷新缓存 */
 cacheContainer.prototype.init = async function() {
     
     var self = this;
-    var loaders = [listLoader.lastestList, listLoader.mostViewedList, lastestArticleLoader];
+    this.loaders = [listLoader.lastestList, listLoader.mostViewedList, lastestArticleLoader];
     try {
-        for (var i = 0; i < loaders.length; i++) {
-            await self.load(loaders[i]);
+        for (var i = 0; i < self.loaders.length; i++) {
+            await self.load(self.loaders[i]);
         }
     } catch(err) {
         debug(chalk.red('缓存加载失败'), chalk.bgRed(err));

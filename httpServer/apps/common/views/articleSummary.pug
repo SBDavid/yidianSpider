@@ -1,5 +1,5 @@
-mixin article(article, currentCateloge, index)
-    a(class= 'article-list-item bottom-1px', href="/article/"+article.itemid+"?cateloge="+currentCateloge + "&index=" +index)
+mixin article(article)
+    a(class= 'article-list-item bottom-1px', href=article.url)
         h2.title #{article.title}
         ul.img-list.cf
             each img in article.surface

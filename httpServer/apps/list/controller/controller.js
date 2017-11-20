@@ -4,12 +4,22 @@ var chalk = require('chalk');
 var cacheCont = require('../../cache/cacheContainer');
 var config = require('../../config');
 
+/* 根据不同的cateloge附加不同url */
+function addUrl(articles, cateloge) {
+    return articles.map(function(article) {
+        article.url = config.getUrl('website') + "/article/"+article.itemid+"?cateloge="+cateloge
+        return article;
+    })
+}
+
 function getList(listType) {
     return new Promise(function(resolve, reject) {
-        resolve(cacheCont.get(listType, {
+        var articles = cacheCont.get(listType, {
             start: 0,
             end: 30
-        }).data);
+        }).data;
+
+        resolve(addUrl(articles, listType));
     });
 }
 
@@ -36,8 +46,7 @@ module.exports = function(listType) {
                                 url: config.getUrl('website') + '/list/mostViewedList',
                                 isCurrent: 'mostViewedList' === listType
                             }
-                        ],
-                        currentCateloge: listType
+                        ]
                     }
                 }
             );

@@ -33,7 +33,7 @@ html
 					ul
 						each item in article.relatedArticle
 							li
-								+article(item, article.relatedArticle.currentCateloge, item.index)
+								+article(item)
 		
 		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static/js/jquery.js')
 		script(src='http://' + domain.static.domain + ':' + domain.static.host + '/static1/article.js')
