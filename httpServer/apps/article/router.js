@@ -18,7 +18,7 @@ router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
 router.use('/static', express.static(__dirname + '/static'));
 
 router.get('/:itemid', function (req, res) {
-    controller(req.params.itemid, req.query.cateloge, req.query.index)
+    controller(req.params.itemid, req.query.cateloge)
     .then(function(article){
         res.render('article', {
             domain: config.domain,

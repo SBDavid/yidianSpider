@@ -2,14 +2,15 @@ var debug = require('debug')('httpServer:controller');
 var chalk = require('chalk');
 
 var cache = require('../../../apps/cache/cacheContainer'),
-    articleApi = require('../../../../fetchAtical/persistence/api/article');
+    articleApi = require('../../../../fetchAtical/persistence/api/article'),
+    config = require('../../config');
 
 /**
  * itemid 目标文章id
  * 推荐文章的cache名
  * 推荐文章在cache中的序号
  */    
-module.exports = function(itemid, relatedCateloge, relatedIndex) {
+module.exports = function(itemid, relatedCateloge) {
     var targetArticle = null;
     return new Promise(function(resolve, reject) {
         Promise.resolve(cache.get('lastestArticle', {
@@ -29,11 +30,28 @@ module.exports = function(itemid, relatedCateloge, relatedIndex) {
         })
         /* 加载相关文章 */
         .then(function() {
-            targetArticle.relatedArticle = cache.get(relatedCateloge, {
+            var relatedIndex = cache.get(relatedCateloge, {
+                filter: function(item) {
+                    return item.itemid === itemid;
+                }
+            }).data[0].index;
+
+            var articles = cache.get(relatedCateloge, {
                 start: parseInt(relatedIndex) + 1,
                 end: parseInt(relatedIndex) + 3
-            }).data
-            targetArticle.relatedArticle.currentCateloge = relatedCateloge;
+            }).data;
+
+            /* 根据不同的cateloge附加不同url */
+            function addUrl(articles, cateloge) {
+                return articles.map(function(article) {
+                    article.url = config.getUrl('website') + "/article/"+article.itemid+"?cateloge="+cateloge
+                    return article;
+                })
+            }
+
+            articles = addUrl(articles, relatedCateloge);
+
+            targetArticle.relatedArticle = articles
 
             return Promise.resolve();
         })
