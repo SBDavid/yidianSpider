@@ -48,15 +48,27 @@ var loader = function (condition, amount, sort) {
 function lastestList() {
     return loader({ images: { $ne: null }, hide: false }, 100)();
 }
-lastestList.loaderName = 'lastestList';
+function lastestListAdd() {
+    return Promise.resolve([]);
+}
 
 function mostViewedList() {
     return loader({ images: { $ne: null }, hide: false }, 100, {readCount: -1 })();
 }
-mostViewedList.loaderName = 'mostViewedList';
+function mostViewedListAdd() {
+    return Promise.resolve([]);
+}
 
 module.exports = {
-    lastestList: lastestList,
-    mostViewedList: mostViewedList
+    lastestList: {
+        loader: lastestList,
+        loaderAdd: lastestListAdd,
+        loaderName: 'lastestList'
+    },
+    mostViewedList: {
+        loader: mostViewedList,
+        loaderAdd: mostViewedListAdd,
+        loaderName: 'mostViewedList'
+    }
 };
 

@@ -13,11 +13,15 @@ var cache = require('../../../apps/cache/cacheContainer'),
 module.exports = function(itemid, relatedCateloge) {
     var targetArticle = null;
     return new Promise(function(resolve, reject) {
-        Promise.resolve(cache.get('lastestArticle', {
+        cache.getAsync('lastestArticle', {
             filter: function(item) {
                 return item.itemid === itemid;
-            }
-        }))
+            },
+            condition: {
+                itemid: itemid
+            },
+            amount: 1
+        })
         /* 加载目标文章 */
         .then(function(articles) {
             if (articles.length === 0) {
