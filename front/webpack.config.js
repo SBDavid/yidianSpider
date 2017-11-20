@@ -23,12 +23,13 @@ var webpackConfig = {
 	},
 	plugins: [
 		new webpack.DefinePlugin({
-			STATIC_URL: JSON.stringify(config.getUrl('static'))
+			STATIC_URL: JSON.stringify(config.getUrl('static')),
+			NODE_ENV: JSON.stringify(process.env.NODE_ENV)
 		})
 	]
 };
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV == 'pro') {
 	webpackConfig.plugins.push(new UglifyJsParallelPlugin({
 		workers: os.cpus().length,
 		mangle: true,

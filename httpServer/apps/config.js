@@ -59,7 +59,7 @@ var domain = {
 };
 
 function config() {
-    this.env = process.env.env || 'dev';
+    this.env = process.env.env || NODE_ENV || 'dev';
     this.domain = domain[this.env];
     this.port = domain[this.env].website.host;
     this.contentStratege = domain[this.env].contentStratege;

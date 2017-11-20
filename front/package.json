@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "cross-env env=beian NODE_ENV=dev webpack -w --colors --profile",
-    "pro": "cross-env env=beian NODE_ENV=production webpack --colors --profile"
+    "pro": "cross-env env=beian NODE_ENV=pro webpack --colors --profile"
   },
   "author": "SBDavid",
   "license": "ISC",
