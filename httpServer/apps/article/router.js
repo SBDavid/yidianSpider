@@ -22,8 +22,8 @@ router.get('/:itemid', function (req, res) {
     .then(function(article){
         res.render('article', {
             domain: config.domain,
-            title: article.title,
-            keywords: article.title,
+            title: '嘻唰唰 ' + article.title,
+            keywords: '搞笑图片 嘻唰唰 ' + article.title,
             description: article.title,
             article: article
         });

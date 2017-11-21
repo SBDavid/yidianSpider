@@ -35,6 +35,7 @@ function importArticles(channel_id, amount) {
         })
         .catch(function(err) {
             debug(chalk.red('articles导入失败'), chalk.red(err));
+            reject(err);
         })
     });
 }

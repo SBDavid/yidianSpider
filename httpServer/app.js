@@ -38,7 +38,9 @@ app.use('/', function (req, res){
 /* 缓存加载 */
 var cacheCont = require('./apps/cache/cacheContainer');
 /* 缓存刷新 */
-var cacheFresh = require('./apps/schedule/cache');
+var cacheFresh = require('./apps/schedule/cache'),
+	fetch = require('./apps/schedule/fetch');
+
 
 cacheCont.init()
 .then(function(){
@@ -50,5 +52,6 @@ cacheCont.init()
 })
 .then(function() {
 	cacheFresh.start();
+	fetch.start();
 })
 

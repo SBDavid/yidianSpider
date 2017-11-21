@@ -48,6 +48,10 @@ function getAticle(itemid) {
             docinfo = JSON.parse(docinfo);
             resolve(docinfo.doc.images);
         })
+        .catch(function(err) {
+            debug(chalk.red('获取文章数据错误：'), chalk.red(err));
+            reject(err);
+        }) 
     });
 }
 

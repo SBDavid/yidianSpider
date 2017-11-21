@@ -1,11 +1,6 @@
 var debug = require('debug')('fetchArticle:persistence');
 var chalk = require('chalk');
 
-// 获取参数
-var cmdName = process.argv.slice(2,3)[0];
-var args = process.argv.slice(3);
-debug(chalk.grey('命令名：'), chalk.yellow(cmdName), chalk.grey('参数：'), chalk.yellow(args));
-
 var importArticleTask =  require('./importArticle');
 var importPicturesTask =  require('./importPictures');
 
@@ -17,23 +12,38 @@ cmds = {
         m577717 青哇
     */
     importArticle: function() {
-        importArticleTask.apply(this, arguments)
-        .then(function() {
-            debug(chalk.gray('执行结束'));
-            process.exit(0)
-        })
+        var self = this,
+            args = arguments;
+        
+        return new Promise(function(resolve, reject) {
+            importArticleTask.apply(self, args)
+            .then(function() {
+                debug(chalk.gray('执行结束'));
+                resolve('ok');
+            })
+            .catch(function(err){
+                reject(err);
+            });
+        });
+        
     },
     importPictures: function() {
-        importPicturesTask.apply(this, arguments)
-        .then(function() {
-            debug(chalk.gray('执行结束'));
-            process.exit(0)
-        })
+        var self = this,
+            args = arguments;
+
+        return new Promise(function(resolve, reject) {
+            importPicturesTask.apply(self, args)
+            .then(function() {
+                debug(chalk.gray('执行结束'));
+                resolve('ok');
+            })
+            .catch(function(err){
+                reject(err);
+            });
+        });
     }
 };
 
-function runCmd(cmdName, args) {
-    cmds[cmdName].apply(this, args)
+module.exports = function(cmdName, args) {
+    return cmds[cmdName].apply(this, args);
 }
-
-runCmd(cmdName, args);

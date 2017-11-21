@@ -154,6 +154,7 @@ function importPictures(amount, timeout) {
             })
             .then(function (amout) {
                 debug(chalk.grey('文章的中的图片已更新 文章数量：'), chalk.yellow(amout));
+                resolve(amount);
             })
             .catch(function (err) {
                 debug(chalk.red('导入文章中的图片链接失败'), chalk.red(err));
