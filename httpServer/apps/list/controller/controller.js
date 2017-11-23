@@ -12,6 +12,19 @@ function addUrl(articles, cateloge) {
     })
 }
 
+/* 前n个不需要懒加载 */
+function ignoreLazyload(articles) {
+    articles.forEach(function(item, index) {
+        if (index < 10) {
+            item.ignoreLazyload = true;
+        } else {
+            return;
+        }
+    });
+
+    return articles;
+}
+
 function getList(listType) {
     return new Promise(function(resolve, reject) {
         var articles = cacheCont.get(listType, {
@@ -19,7 +32,7 @@ function getList(listType) {
             end: 30
         }).data;
 
-        resolve(addUrl(articles, listType));
+        resolve(ignoreLazyload(addUrl(articles, listType)));
     });
 }
 

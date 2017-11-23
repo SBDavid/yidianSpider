@@ -4,7 +4,10 @@ mixin article(article)
         ul.img-list.cf
             each img in article.surface
                 li
-                    img(data-original=img, alt="")
+                    if article.ignoreLazyload
+                        img(src=img, alt=article.title)
+                    else
+                        img(data-original=img, alt="")
         p.article-info 
             span #{article.date}
             if article.readCount > 0
