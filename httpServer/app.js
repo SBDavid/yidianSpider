@@ -31,9 +31,7 @@ app.use('/article', require('./apps/article/router'));
 app.use('/apis', require('./apis/router'));
 
 // 重定向到首页
-app.use('/', function (req, res){
-	res.redirect('/list');
-});
+app.use('/', require('./apps/list/router'));
 
 /* 缓存加载 */
 var cacheCont = require('./apps/cache/cacheContainer');

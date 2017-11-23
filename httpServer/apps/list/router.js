@@ -4,17 +4,21 @@ var lessMiddleware = require('less-middleware');
 
 var controller = require('./controller/controller');
 
-router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
+var lessM  = lessMiddleware(__dirname + '/static/less', {
     dest: __dirname + '/static/css',
     force: false,
     debug: false,
     render: {
         compress: false
     },
-}));
+});
+
+router.use('/static/css', lessM);
+router.use('list/static/css', lessM);
 
 //static file
 router.use('/static', express.static(__dirname + '/static'));
+router.use('list/static', express.static(__dirname + '/static'));
 
 function getList(req, res, listType) {
     // 获取文章列表 -- 已经扒取成功的
@@ -27,8 +31,14 @@ function getList(req, res, listType) {
 router.get('/', function(req, res) {
     getList(req, res, 'lastestList');
 });
+router.get('list/', function(req, res) {
+    getList(req, res, 'lastestList');
+});
 
 router.get('/:listType', function (req, res) {
+    getList(req, res, req.params.listType);
+});
+router.get('list/:listType', function (req, res) {
     getList(req, res, req.params.listType);
 });
 
