@@ -17,8 +17,11 @@ router.use('/static/css', lessM);
 router.use('list/static/css', lessM);
 
 //static file
-router.use('/static', express.static(__dirname + '/static'));
-router.use('list/static', express.static(__dirname + '/static'));
+var options = {
+	maxAge: '1d'
+}
+router.use('/static', express.static(__dirname + '/static', options));
+router.use('list/static', express.static(__dirname + '/static', options));
 
 function getList(req, res, listType) {
     // 获取文章列表 -- 已经扒取成功的

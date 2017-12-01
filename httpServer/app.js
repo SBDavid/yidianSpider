@@ -18,7 +18,7 @@ app.set('views', ['./apps/list/views', './apps/article/views']);
 // public static file
 var options = {
 	maxAge: '1d'
-  }
+}
 app.use('/static', express.static('static', options));
 app.use('/static1', express.static(path.resolve(__dirname, '../front/dist'), options));
 
