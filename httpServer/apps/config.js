@@ -16,6 +16,10 @@ var domain = {
             domain: 'localhost',
             host: '81'
         },
+        sta: {
+            domain: 'localhost',
+            host: '80'
+        },
         contentStratege: 'outter'
     },
     pro: {
@@ -24,15 +28,19 @@ var domain = {
             host: '80'
         },
         static: {
-            domain: 'm.xishuashua.site',
+            domain: 'static.xishuashua.site',
             host: '80'
         },
         img: {
-            domain: 'm.xishuashua.site',
+            domain: 'img.xishuashua.site',
             host: '80'
         },
         api: {
-            domain: 'm.xishuashua.site',
+            domain: 'api.xishuashua.site',
+            host: '80'
+        },
+        sta: {
+            domain: 'api.xishuashua.site',
             host: '80'
         },
         contentStratege: 'outter'
@@ -51,6 +59,10 @@ var domain = {
             host: '80'
         },
         api: {
+            domain: '101.132.147.139',
+            host: '80'
+        },
+        sta: {
             domain: '101.132.147.139',
             host: '80'
         },

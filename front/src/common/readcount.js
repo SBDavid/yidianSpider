@@ -12,7 +12,7 @@ if (itemid && itemid[1]) {
     itemid = itemid[1];
 }
 
-fetch(config.getUrl('api') + '/apis/sta/readcount/' + itemid)
+fetch(config.getUrl('sta') + '/apis/sta/readcount/' + itemid)
 .then(function(data) {
    
 })
