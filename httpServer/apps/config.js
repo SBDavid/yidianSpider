@@ -40,7 +40,7 @@ var domain = {
             host: '80'
         },
         sta: {
-            domain: 'api.xishuashua.site',
+            domain: 'sta.xishuashua.site',
             host: '80'
         },
         contentStratege: 'outter'
