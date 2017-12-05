@@ -15,7 +15,10 @@ router.use('/static/css', lessMiddleware(__dirname + '/static/less', {
 }));
 
 //static file
-router.use('/static', express.static(__dirname + '/static'));
+var options = {
+	maxAge: '1d'
+}
+router.use('/static', express.static(__dirname + '/static', options));
 
 router.get('/:itemid', function (req, res) {
     controller(req.params.itemid, req.query.cateloge)

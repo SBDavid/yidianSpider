@@ -15,7 +15,7 @@ function addUrl(articles, cateloge) {
 /* 前n个不需要懒加载 */
 function ignoreLazyload(articles) {
     articles.forEach(function(item, index) {
-        if (index < 10) {
+        if (index < 1) {
             item.ignoreLazyload = true;
         } else {
             return;
