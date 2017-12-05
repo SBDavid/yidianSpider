@@ -29,19 +29,19 @@ var domain = {
         },
         static: {
             domain: 'static.xishuashua.site',
-            host: '8001'
+            host: '80'
         },
         img: {
             domain: 'img.xishuashua.site',
-            host: '8001'
+            host: '80'
         },
         api: {
             domain: 'api.xishuashua.site',
-            host: '8001'
+            host: '80'
         },
         sta: {
             domain: 'sta.xishuashua.site',
-            host: '8001'
+            host: '80'
         },
         contentStratege: 'outter'
     },
