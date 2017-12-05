@@ -21,19 +21,19 @@ var domain = {
     pro: {
         website: {
             domain: 'm.xishuashua.site',
-            host: '80'
+            host: '8001'
         },
         static: {
             domain: 'm.xishuashua.site',
-            host: '80'
+            host: '8001'
         },
         img: {
             domain: 'm.xishuashua.site',
-            host: '80'
+            host: '8001'
         },
         api: {
             domain: 'm.xishuashua.site',
-            host: '80'
+            host: '8001'
         },
         contentStratege: 'outter'
     },
