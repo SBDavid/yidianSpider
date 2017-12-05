@@ -25,7 +25,7 @@ var domain = {
     pro: {
         website: {
             domain: 'm.xishuashua.site',
-            host: '8001'
+            host: '80'
         },
         static: {
             domain: 'static.xishuashua.site',
