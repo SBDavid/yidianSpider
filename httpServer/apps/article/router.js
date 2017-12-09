@@ -31,6 +31,9 @@ router.get('/:itemid', function (req, res) {
             article: article
         });
     })
+    .catch(function(err) {
+        res.sendStatus(503);
+    })
 });
 
 

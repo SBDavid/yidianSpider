@@ -29,7 +29,7 @@ cacheContainer.prototype.load = function(loader) {
 cacheContainer.prototype.get = function(cacheName, opt) {
     opt = Object.assign({
         start: 0,
-        end: 100,
+        end: 10000,
         filter: function(item) {
             return true;
         }

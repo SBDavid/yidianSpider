@@ -24,12 +24,11 @@ module.exports = function(itemid, relatedCateloge) {
         })
         /* 加载目标文章 */
         .then(function(articles) {
-            if (articles.length === 0) {
+            if (articles.data.length === 0) {
                 debug(chalk.red('获取文章列表错误，没有找到文章 itemId:'), chalk.bgRed(itemid));
-                reject('获取文章列表错误，没有找到文章');
+                throw('获取文章列表错误，没有找到文章'); 
             }
             targetArticle = articles.data[0];
-            
             return Promise.resolve();
         })
         /* 加载相关文章 */
