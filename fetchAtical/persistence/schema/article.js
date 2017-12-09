@@ -16,7 +16,7 @@ var articleSchema = mongoose.Schema({
     _id: true,
     timestamps: { 
         createdAt: 'createdAt',
-        updatedAt: 'updatedAt '
+        updatedAt: 'updatedAt'
     }
 });
 

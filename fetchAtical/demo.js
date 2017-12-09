@@ -25,3 +25,12 @@ articleApi.find({}, 1)
 
 importPictures(100, 10000).then(function(res) {
 }); */
+
+// spiderlog
+
+var spiderlogApi = require('./persistence/api/spiderlog');
+
+spiderlogApi.insert({
+    shortName: 'baidu',
+    ua: 'test'
+})

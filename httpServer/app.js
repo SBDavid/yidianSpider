@@ -5,15 +5,22 @@ var path = require('path');
 var express = require('express');
 var app = express();
 
-var config = require('./apps/config');
+var config = require('./apps/config'),
+	spiderLog = require('./apps/spiderlog/spiderlog');
 
 // gzip
-var compression = require('compression');
-app.use(compression());
+/* var compression = require('compression');
+app.use(compression()); */
 
 // app config
 app.set('view engine', 'pug');
 app.set('views', ['./apps/list/views', './apps/article/views']);
+
+/* 爬虫日志记录 */
+app.use(function(req, res, next){
+	spiderLog(req);
+	next();
+});
 
 // public static file
 var options = {
