@@ -45,8 +45,8 @@ var cacheFresh = require('./apps/schedule/cache'),
 
 cacheCont.init()
 .then(function(){
-	var server = app.listen(8001, function () {
-		debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(8001));
+	var server = app.listen(config.httpServerPort, function () {
+		debug(chalk.grey('http服务已启动 端口：'), chalk.yellow(config.httpServerPort));
 
 		return Promise.resolve()
 	});

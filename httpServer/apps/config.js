@@ -2,25 +2,30 @@ var domain = {
     dev: {
         website: {
             domain: 'localhost',
-            host: '81'
+            host: '80'
         },
         static: {
             domain: 'localhost',
-            host: '81'
+            host: '80'
         },
         img: {
             domain: 'localhost',
-            host: '81'
+            host: '80'
         },
         api: {
             domain: 'localhost',
-            host: '81'
-        },
-        sta: {
-            domain: 'localhost',
             host: '80'
         },
-        contentStratege: 'outter'
+        sta: {
+            domain: 'sta.local.com',
+            host: '80'
+        },
+        contentStratege: 'outter',
+        httpServerPort: 80,
+        cros: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, GET'
+        }
     },
     pro: {
         website: {
@@ -43,38 +48,21 @@ var domain = {
             domain: 'sta.xishuashua.site',
             host: '80'
         },
-        contentStratege: 'outter'
-    },
-    beian: {
-        website: {
-            domain: '101.132.147.139',
-            host: '80'
-        },
-        static: {
-            domain: '101.132.147.139',
-            host: '80'
-        },
-        img: {
-            domain: '101.132.147.139',
-            host: '80'
-        },
-        api: {
-            domain: '101.132.147.139',
-            host: '80'
-        },
-        sta: {
-            domain: '101.132.147.139',
-            host: '80'
-        },
-        contentStratege: 'outter'
+        contentStratege: 'outter',
+        httpServerPort: 8001,
+        cros: {
+            'Access-Control-Allow-Origin': '*.xishuashua.site',
+            'Access-Control-Allow-Methods': 'POST, GET'
+        }
     }
 };
 
 function config() {
     this.env = process.env.env || NODE_ENV || 'dev';
     this.domain = domain[this.env];
-    this.port = domain[this.env].website.host;
+    this.httpServerPort = domain[this.env].httpServerPort;
     this.contentStratege = domain[this.env].contentStratege;
+    this.cros = domain[this.env].cros;
 }
 
 config.prototype.getUrl = function(type) {
