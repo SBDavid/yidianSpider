@@ -4,7 +4,6 @@ var config = require('../apps/config');
 
 /* 跨域配置 */
 router.use(function (req, res, next) {
-    console.info(req.headers.origin);
     if (config.cros['Access-Control-Allow-Origin'].indexOf(req.headers.origin) !== -1) {
         res.append('Access-Control-Allow-Origin', req.headers.origin);
     }
