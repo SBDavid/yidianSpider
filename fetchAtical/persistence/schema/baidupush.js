@@ -1,16 +1,9 @@
 var mongoose = require('../connection');
 
 var baidupushSchema = mongoose.Schema({
-    date: { type: String },
-    title: { type: String },
-    itemid: { type: String },
-    source: { type: String },
-    fromId: { type: String },
     url: { type: String },
-    category: { type: String },
-    images: { type: Object, default: null },
-    readCount: { type: Number, default: 0 },
-    hide: {type: Boolean, default: false}
+    action: { type: String },
+    isDone: { type: String, default: false }
 }, { 
     autoIndex: false,
     _id: true,
@@ -20,4 +13,4 @@ var baidupushSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('baidupush', articleSchema);
+module.exports = mongoose.model('baidupush', baidupushSchema);

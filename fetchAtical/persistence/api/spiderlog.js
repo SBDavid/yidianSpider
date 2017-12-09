@@ -1,5 +1,5 @@
 var spiderlogModel = require('../schema/spiderlog');
-var debug = require('debug')('spiderlog:persistence');
+var debug = require('debug')('fetchArticle:persistence');
 var chalk = require('chalk');
 function spiderlogApi() {
 

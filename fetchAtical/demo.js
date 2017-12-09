@@ -28,9 +28,18 @@ importPictures(100, 10000).then(function(res) {
 
 // spiderlog
 
-var spiderlogApi = require('./persistence/api/spiderlog');
+/* var spiderlogApi = require('./persistence/api/spiderlog');
 
 spiderlogApi.insert({
     shortName: 'baidu',
     ua: 'test'
+}) */
+
+// baidupush
+
+var baidupush = require('./persistence/api/baidupush');
+
+baidupush.insert({
+    url: 'url',
+    action: 'insert'
 })
