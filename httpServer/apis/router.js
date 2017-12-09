@@ -4,7 +4,11 @@ var config = require('../apps/config');
 
 /* 跨域配置 */
 router.use(function (req, res, next) {
-    res.append('Access-Control-Allow-Origin', config.cros['Access-Control-Allow-Origin']);
+    console.info(req.headers.origin);
+    if (config.cros['Access-Control-Allow-Origin'].indexOf(req.headers.origin) !== -1) {
+        res.append('Access-Control-Allow-Origin', req.headers.origin);
+    }
+    
     res.append('Access-Control-Allow-Methods', config.cros['Access-Control-Allow-Methods']);
     next();
 });

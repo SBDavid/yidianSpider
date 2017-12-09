@@ -1,7 +1,7 @@
 var domain = {
     dev: {
         website: {
-            domain: 'localhost',
+            domain: 'm.local.com',
             host: '80'
         },
         static: {
@@ -23,7 +23,7 @@ var domain = {
         contentStratege: 'outter',
         httpServerPort: 80,
         cros: {
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'http://m.local.com|http://www.local.com',
             'Access-Control-Allow-Methods': 'POST, GET'
         }
     },
@@ -51,7 +51,7 @@ var domain = {
         contentStratege: 'outter',
         httpServerPort: 8001,
         cros: {
-            'Access-Control-Allow-Origin': '*.xishuashua.site',
+            'Access-Control-Allow-Origin': 'http://m.xishuashua.site|http://www.xishuashua.site',
             'Access-Control-Allow-Methods': 'POST, GET'
         }
     }
