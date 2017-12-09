@@ -21,6 +21,8 @@ app.use(function(req, res, next){
 	spiderLog(req);
 	next();
 });
+/* robot */
+app.get('/robots.txt', express.static('robot'));
 
 // public static file
 var options = {
