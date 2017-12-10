@@ -56,7 +56,7 @@ cmds = {
                 debug(chalk.red('baiduUploadPage'), chalk.red(err));
                 reject(err);
             });
-        }
+        })
     }
 };
 
