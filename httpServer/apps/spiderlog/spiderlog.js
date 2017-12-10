@@ -16,6 +16,10 @@ uaMap = {
     'Mozilla/5.0 (compatible;Baiduspider-render/2.0; +http://www.baidu.com/search/spider.html)': {
         tag: 'PC UA 2',
         spiderName: 'baidu'
+    },
+    'Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/533.3 (KHTML, like Gecko) Qt/4.7.3 Safari/533.3': {
+        tag: 'QT',
+        spiderName: 'baidu'
     }
 }
 
