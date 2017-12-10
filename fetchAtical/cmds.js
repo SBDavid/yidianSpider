@@ -3,6 +3,7 @@ var chalk = require('chalk');
 
 var importArticleTask =  require('./importArticle');
 var importPicturesTask =  require('./importPictures');
+var baiduUploadPage = require('../httpServer/apps/spiderlog/baiduUploadPage');
 
 cmds = {
     /* 
@@ -41,6 +42,21 @@ cmds = {
                 reject(err);
             });
         });
+    },
+    baiduUploadPage: function() {
+        var self = this,
+        args = arguments;
+
+        return new Promise(function(resolve, reject) {
+            baiduUploadPage()
+            .then(function(res) {
+                debug(chalk.gray('执行结束'), chalk.yellow(res));
+            })
+            .catch(function(err){
+                debug(chalk.red('baiduUploadPage'), chalk.red(err));
+                reject(err);
+            });
+        }
     }
 };
 
