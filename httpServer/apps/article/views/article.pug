@@ -22,7 +22,7 @@ html
 					li
 						if imageInfo.animatedurl
 							div.animatedCont
-								img(src=imageInfo.url data-static-src=imageInfo.url data-animated-src=imageInfo.animatedurl)
+								img(width=imageInfo.width height=imageInfo.height src=imageInfo.url data-static-src=imageInfo.url data-animated-src=imageInfo.animatedurl)
 								div.play-btn
 
 						else

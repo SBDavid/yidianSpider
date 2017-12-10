@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/app.js",
             "env": {
                 "DEBUG": "httpServer:*",
-                "env": "dev",
+                "env": "dev"
             }
         }
     ]
