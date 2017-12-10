@@ -66,7 +66,7 @@ function config() {
 }
 
 config.prototype.getUrl = function(type) {
-    return 'http://' + domain[this.env][type].domain + ':' + domain[this.env][type].host;
+    return 'http://' + domain[this.env][type].domain;
 }
 
 module.exports = new config();

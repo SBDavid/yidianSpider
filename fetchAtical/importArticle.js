@@ -3,6 +3,7 @@ var chalk = require('chalk');
 
 var getArticleLink = require('./httpClient/getArticleLink');
 var articleApi = require('./persistence/api/article');
+var addBaidupush = require('./spider/baidupush');
 
 function importArticles(channel_id, amount) {
 
@@ -11,7 +12,7 @@ function importArticles(channel_id, amount) {
         cend: amount || 10
     }
     return new Promise(function(resolve, reject) {
-
+        var importAmount = 0;
         getArticleLink(param)
         .then(function(res) {
             // 通过promise.all写入所有的数据
@@ -25,9 +26,15 @@ function importArticles(channel_id, amount) {
             return Promise.all(promiseList);
         })
         .then(function(res) {
-            var importAmount = res.filter(item => {
+            // 找到新的文章
+            var newArticles = res.filter(item => {
                 return item !==  false;
-            }).length;
+            });
+            importAmount = newArticles.length;
+            // 插入baidupush
+            return addBaidupush(newArticles);
+        })
+        .then(function() {
             debug(chalk.grey('articles导入成功 新导入的文章数量：'), chalk.yellow(importAmount));
             resolve({
                 importAmount: importAmount

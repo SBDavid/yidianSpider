@@ -1,5 +1,6 @@
 var mySchedule = require('./mySchedule'),
-    cmds = require('../../../fetchAtical/cmds');
+    cmds = require('../../../fetchAtical/cmds'),
+    baiduUploadPage = require('../spiderlog/baiduUploadPage');
 
 
 function cb() {
@@ -24,11 +25,15 @@ function cb() {
     })
     .then(function() {
         return cmds('importPictures', [30, 30000])
-    });
+    })
+    .then(function() {
+        return baiduUploadPage();
+    })
 }
 
 function fetch() {
-    this.s = new mySchedule(1000 * 60 * 60 * 24);
+    // this.s = new mySchedule(1000 * 60 * 60 * 24);
+    this.s = new mySchedule(1000);
     this.s.addTask('refresh', cb, null);
 }
 
