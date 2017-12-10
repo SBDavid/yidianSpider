@@ -54,11 +54,11 @@ articleApi.prototype = {
                     return self.insert(obj);
                 } else {
                     // 数据重复
-                    resolve(0);
+                    resolve(false);
                 }
             })
             .then(function(res) {
-                resolve(1);
+                resolve(obj);
             })
             .catch(function(err) {
                 reject(err);

@@ -26,7 +26,7 @@ function importArticles(channel_id, amount) {
         })
         .then(function(res) {
             var importAmount = res.filter(item => {
-                return item === 1;
+                return item !==  false;
             }).length;
             debug(chalk.grey('articles导入成功 新导入的文章数量：'), chalk.yellow(importAmount));
             resolve({
