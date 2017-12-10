@@ -4,7 +4,7 @@
 
 ### 导入图片
 
-DEBUG=fetchArticle:* node cmdsRun.js importPictures 10 10000
+DEBUG=fetchArticle:* env=pro node cmdsRun.js importPictures 10 10000
 
 ### 导入文章
 
