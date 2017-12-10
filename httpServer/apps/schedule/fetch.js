@@ -32,8 +32,8 @@ function cb() {
 }
 
 function fetch() {
-    // this.s = new mySchedule(1000 * 60 * 60 * 24);
-    this.s = new mySchedule(1000);
+    this.s = new mySchedule(1000 * 60 * 60 * 24);
+    //this.s = new mySchedule(1000);
     this.s.addTask('refresh', cb, null);
 }
 
