@@ -45,7 +45,7 @@ module.exports = function (itemid, relatedCateloge) {
 
                     var articles = cache.get(relatedCateloge, {
                         start: parseInt(relatedIndex) + 1,
-                        end: parseInt(relatedIndex) + 3
+                        end: parseInt(relatedIndex) + 10
                     }).data;
 
                     /* 根据不同的cateloge附加不同url */

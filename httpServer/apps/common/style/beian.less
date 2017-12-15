@@ -1,0 +1,29 @@
+@import (less) "./fontsize.less";
+@import (less) "./container.less";
+@import (less) "./utils.less";
+@import (less) "./onepx.less";
+@import (less) "./color.less";
+
+.beian {
+    background-color: @common-grey;
+    padding: @cont-padding; 
+    color: @text-grey;
+    font-size: .28rem;
+
+    ul {
+        li {
+            margin: .1rem 0;
+            a {
+                i {
+                    background-image: url(icon-police.png);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    width: .36rem;
+                    height: .36rem;
+                    display: inline-block;
+                    vertical-align: text-bottom;
+                }
+            }
+        }
+    }
+}
