@@ -12,7 +12,7 @@ createMoment = function (format) {
 
 createTimeFromNow = function (format) {
     return function () {
-        var dateEnd = this.now;
+        var dateEnd = moment();
         var dateStart = moment(arguments[0], format);
 
         return {
@@ -30,6 +30,7 @@ createFormatDate = function (format) {
 }
 
 function dateUtil() {
+    // 这个now会被缓存，导致时间不正确
     this.now = moment();
 }
 
