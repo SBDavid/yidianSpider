@@ -2,10 +2,16 @@ var fetch = require('node-fetch'),
     baidupushApi = require('../../../fetchAtical/persistence/api/baidupush');
 
 function upload(items) {
+
+    const apis = {
+        insert: 'http://data.zz.baidu.com/urls?site=m.xishuashua.site&token=CA3Z8HzriWxmojz3',
+        update: ' http://data.zz.baidu.com/update?site=m.xishuashua.site&token=CA3Z8HzriWxmojz3'
+    }
+
     return new Promise(function(resolve, reject) {
         var prom = [];
         items.forEach(function(element) {
-            prom.push(fetch('http://data.zz.baidu.com/urls?site=m.xishuashua.site&token=CA3Z8HzriWxmojz3',
+            prom.push(fetch(apis[element.action],
                 { method: 'POST', body: element.url}
             ));
             
@@ -68,5 +74,5 @@ function baiduUploadPage() {
         }) 
     })
 }
-
+baiduUploadPage();
 module.exports = baiduUploadPage;

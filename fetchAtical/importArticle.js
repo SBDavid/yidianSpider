@@ -3,7 +3,7 @@ var chalk = require('chalk');
 
 var getArticleLink = require('./httpClient/getArticleLink');
 var articleApi = require('./persistence/api/article');
-var addBaidupush = require('./spider/baidupush');
+var baidupush = require('./spider/baidupush');
 
 function importArticles(channel_id, amount) {
 
@@ -32,7 +32,7 @@ function importArticles(channel_id, amount) {
             });
             importAmount = newArticles.length;
             // 插入baidupush
-            return addBaidupush(newArticles);
+            return baidupush.addBaidupush(newArticles);
         })
         .then(function() {
             debug(chalk.grey('articles导入成功 新导入的文章数量：'), chalk.yellow(importAmount));

@@ -33,4 +33,36 @@ function addBaidupush(articles) {
     })
 }
 
-module.exports = addBaidupush;
+
+function addBaidupushUpdate() {
+    if (config.env !== 'pro') {
+        return Promise.resolve(0);
+    }
+
+    var urls = [];
+    urls.push("http://m.xishuashua.site/");
+    urls.push("http://m.xishuashua.site/list/mostViewedList");
+    /* urls.push("http://m.xishuashua.site/list/lastestList"); */
+
+    return new Promise(function(resolve, reject) {
+        baidupushApi.insert({
+            url: urls.join('\n'),
+            action: 'update',
+            amount: urls.length
+        })
+        .then(function(res) {
+            debug(chalk.gray('百度爬虫数据插入成功 数据量：'), chalk.yellow(urls.length));
+            resolve(1);
+        })
+        .catch(function(err) {
+            debug(chalk.red('百度爬虫数据插入失败'), chalk.yellow(err));
+            reject(err);
+        })
+    })
+
+}
+
+module.exports = {
+    addBaidupush,
+    addBaidupushUpdate
+}
