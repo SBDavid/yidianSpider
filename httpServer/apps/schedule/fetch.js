@@ -1,5 +1,3 @@
-import { func } from './C:/Users/billl89/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/assert-plus';
-
 var mySchedule = require('./mySchedule'),
     cmds = require('../../../fetchAtical/cmds'),
     baiduUploadPage = require('../spiderlog/baiduUploadPage'),

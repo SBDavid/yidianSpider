@@ -34,6 +34,9 @@ app.use('/static1', express.static(path.resolve(__dirname, '../front/dist'), opt
 // 图片资源
 app.use('/img', express.static('../images'));
 
+// google认证
+app.use('/googlef7957649084d11b9.html', express.static('static/searchEngine/googlef7957649084d11b9.html'));
+
 // routers
 /* 文章列表 */
 app.use('/list', require('./apps/list/router'));
