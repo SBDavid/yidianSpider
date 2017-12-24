@@ -1,7 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /static/
-Disallow: /list/static/
-Disallow: /article/static/
-Disallow: /apis/
 Disallow: /apis/
